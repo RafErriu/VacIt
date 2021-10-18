@@ -19,6 +19,11 @@ class VacatureRepository extends ServiceEntityRepository
         parent::__construct($registry, Vacature::class);
     }
 
+    public function getAllVacatures() {
+        $vacatures = $this->findAll();
+        return($vacatures);
+    }
+
     // /**
     //  * @return Vacature[] Returns an array of Vacature objects
     //  */
