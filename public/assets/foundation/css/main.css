@@ -1,0 +1,35 @@
+.red {
+    color: red;
+}
+
+.header {
+    background-color:#333333;
+    height: 150px;
+}
+
+.logo {
+    width:250px;
+}
+
+.main {
+    background-color: #F15A24;;
+}
+
+.vacature{
+    margin-left: 600px;
+    margin-top: 50px;
+}
+
+.plaatje {
+    width: 200px;
+    position: relative;
+    display: inline-block;
+}
+
+.omschrijving {
+    width: 800px;
+    white-space: nowrap;
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}

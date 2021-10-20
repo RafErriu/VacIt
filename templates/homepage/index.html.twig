@@ -8,13 +8,16 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<div class="example-wrapper">
-    <h1>Hello VacIt✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Abyss Web Server/htdocs/VacIt/src/Controller/HomepageController.php'|file_link(0) }}">src/Controller/HomepageController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Abyss Web Server/htdocs/VacIt/templates/homepage/index.html.twig'|file_link(0) }}">templates/homepage/index.html.twig</a></code></li>
-    </ul>
+<div class="grid-x main">
+    {% for vacature in vacatures %}
+    <div class="cell medium-8 vacature">
+    <div class="plaatje"><img src="{{asset(vacature.systeem.plaatje)}}"></div>
+    <div style="display: inline-block;">
+        <div>{{vacature.datum.format('d/m/Y')}}</div>  
+        <div>{{vacature.titel}}</div>
+        <div class="omschrijving">{{vacature.omschrijving}}</div>
+    </div>
+    </div>
+    {% endfor %} 
 </div>
 {% endblock %}

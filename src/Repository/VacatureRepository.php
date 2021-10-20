@@ -24,6 +24,24 @@ class VacatureRepository extends ServiceEntityRepository
         return($vacatures);
     }
 
+    public function nieuweVacature($vacatures){
+        $vacature = new Vacature();
+        $vacature->setTitel($vacatures["titel"]);
+        $vacature->setDatum(new \DateTime);
+        $vacature->setNiveau($vacatures["niveau"]);
+        $vacature->setOmschrijving($vacatures["omschrijving"]) ;
+        $vacature->setSysteem($vacatures["systeem_id"]);
+        $vacature->setWerkgever($vacatures["werkgever_id"]);
+
+        $em = $this->getEntityManager();
+        $em->flush();
+           
+        
+        return ($vacature);
+        echo "Vacature toegevoegd!";
+
+    }
+
     // /**
     //  * @return Vacature[] Returns an array of Vacature objects
     //  */
