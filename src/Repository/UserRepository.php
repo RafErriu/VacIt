@@ -22,6 +22,31 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         parent::__construct($registry, User::class);
     }
 
+    public function nieuweUser($params){
+        $user = new User();
+        $user->setEmail($params["email"]);
+        $user->setRoles($params["roles"]);
+        $user->setPassword($params["password"]);
+        $user->setVoornaam($params["voornaam"]) ;
+        $user->setAchternaam($params["achternaam"]);
+        $user->setGeboortedatum($params["geboortedatum"]);
+        $user->setTelefoonnummer($params["telefoonnummer"]);
+        $user->setAdres($params["adres"]);
+        $user->setPostcode($params["postcode"]);
+        $user->setWoonplaats($params["woonplaats"]);
+        $user->setMotivatie($params["motivatie"]);
+        $user->setCV($params["cv"]);
+        $user->setRecordType($params["record_type"]);       
+
+        $em = $this->getEntityManager();
+        $em->persist($user);
+        $em->flush();
+        
+        return ($user);
+        echo "User toegevoegd!";
+
+    }
+
     /**
      * Used to upgrade (rehash) the user's password automatically over time.
      */

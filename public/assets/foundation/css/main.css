@@ -7,8 +7,26 @@
     height: 150px;
 }
 
+.footer {
+     background-color:#333333;
+    height: 150px;
+}
+
 .logo {
     width:250px;
+}
+
+.registreren {
+    display: inline;
+    color: white;
+    margin-right: 100px;
+    
+}
+
+.inloggen {
+    display: inline;
+    color: white;
+    margin-right: 50px;
 }
 
 .main {
@@ -26,10 +44,27 @@
     display: inline-block;
 }
 
-.omschrijving {
-    width: 800px;
-    white-space: nowrap;
-    overflow: hidden;
+.box {
 
-    text-overflow: ellipsis;
+    
 }
+
+.omschrijving {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 800px;
+    height:50px;
+    white-space: initial;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    
+}
+
+input.line{
+    border:none; 
+    box-shadow: none; 
+    border-bottom: 3px solid #F15A24;
+    width: 75%;
+}
+

@@ -37,7 +37,7 @@ class VacatureRepository extends ServiceEntityRepository
         $em->flush();
            
         
-        return ($vacature);
+        return ($vacatures);
         echo "Vacature toegevoegd!";
 
     }

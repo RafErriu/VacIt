@@ -27,8 +27,25 @@
             <img src="{{ asset('assets/images/vacit-logo-white.png')}}" class="logo">
             </a>
         </div>
+        <div style="display: flex; justify-content: flex-end; align-items: flex-end;" class="cell small-8">
+            <a href="{{ path('registreren') }}">
+              <p class="registreren">REGISTREREN</p>
+            </a>
+            <a href="{{ path('inloggen') }}">
+              <p class="inloggen">INLOGGEN</p>
+            </a>
+        
+        </div>
      </div>
-    </div>
+   
         {% block body %}{% endblock %}
+    
+     <div class="grid-x footer">
+        <div class="cell small-4">
+            <a href="{{ path('homepage') }}">
+            <img src="{{ asset('assets/images/vacit-logo-white.png')}}" class="logo">
+            </a>
+        </div>
+     </div>
     </body>
 </html>
