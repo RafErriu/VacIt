@@ -19,14 +19,27 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
 {
     public function __construct(ManagerRegistry $registry)
     {
+    
         parent::__construct($registry, User::class);
     }
+    public function getAllUsers() {
+        $users = $this->findAll();
+        return($users);
+    }
+
+    
+    public function getOneUser($id) {
+        $user = $this->find($id);
+        return($user);
+    }
+
 
     public function nieuweUser($params){
         $user = new User();
+        $profiel=$this->find($params["id"]);
         $user->setEmail($params["email"]);
-        $user->setRoles($params["roles"]);
         $user->setPassword($params["password"]);
+        $user->setRoles($params["roles"]);
         $user->setVoornaam($params["voornaam"]) ;
         $user->setAchternaam($params["achternaam"]);
         $user->setGeboortedatum($params["geboortedatum"]);
@@ -44,8 +57,8 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         
         return ($user);
         echo "User toegevoegd!";
-
     }
+
 
     /**
      * Used to upgrade (rehash) the user's password automatically over time.
@@ -58,7 +71,7 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
 
         $user->setPassword($newHashedPassword);
         $this->_em->persist($user);
-        $this->_em->flush();
+        $this->_em->flush(); 
     }
 
     // /**

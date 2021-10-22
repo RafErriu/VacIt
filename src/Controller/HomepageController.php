@@ -26,6 +26,17 @@ class HomepageController extends AbstractController
             return['vacatures' => $vacatures];
     }
 
+     /**
+     * @Route("/vacature/{id}", name= "vacature")
+     * @Template()
+     */
+    public function vacature($id)
+    {
+        $rep = $this->getDoctrine()->getRepository(Vacature::class);
+        $vacature = $rep->getVacature($id);
+        
+        return($this->render('homepage/vacature.html.twig', ['vacature' => $vacature]));
+}
     
      /**
      * @Route("/", name= "homepage")

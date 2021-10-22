@@ -6,7 +6,8 @@
 		<link rel="stylesheet" type="text/css" href="{{ asset('assets/foundation/css/main.css') }}"/>  
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/foundation/css/foundation.css') }}"/>
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/foundation/css/foundation-float.css') }}"/>
-
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/fontawesome.css') }}"/>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
         <title>{% block title %}Welcome!{% endblock %}</title>
         {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
@@ -21,19 +22,48 @@
     </head>
     <body>
 
+
     <div class="grid-x header">
-        <div class="cell small-4">
+        <div class="cell small-8">
+        
             <a href="{{ path('homepage') }}">
             <img src="{{ asset('assets/images/vacit-logo-white.png')}}" class="logo">
             </a>
-        </div>
-        <div style="display: flex; justify-content: flex-end; align-items: flex-end;" class="cell small-8">
-            <a href="{{ path('registreren') }}">
-              <p class="registreren">REGISTREREN</p>
-            </a>
-            <a href="{{ path('inloggen') }}">
-              <p class="inloggen">INLOGGEN</p>
-            </a>
+
+            <a>
+                  <div class="registreren"> 
+                                {% if not is_granted('ROLE_USER') %}
+                                <a href="{{ path('register') }}">REGISTREREN</a>
+                                {% elseif is_granted('ROLE_WERKNEMER') %}
+                                 <a href="{{ path('profiel') }}">MIJN PROFIEL</a>
+                                {% elseif is_granted('ROLE_BEDRIJF') %}
+                                  <a>MIJN PROFIEL</a>
+                                {% endif %}
+                   </div>
+              </a>
+
+                <a>
+                  <div class="registreren"> 
+                                {% if not is_granted('ROLE_USER') %}
+                                {% elseif is_granted('ROLE_WERKNEMER') %}
+                                <a> MIJN SOLLICITATIES</a>
+                                {% elseif is_granted('ROLE_BEDRIJF') %}
+                                <a>MIJN VACATURES</a>
+                                {% endif %}
+                   </div>
+              </a>
+
+         
+
+            
+                  <div class="registreren"> 
+                        {% if not is_granted('ROLE_USER') %}
+                            <a  href="{{ path('login') }}">INLOGGEN</a>
+                                {% else %}
+                            <a href="{{ path('logout') }}">UITLOGGEN</a>
+                                {% endif %}
+                    </div>
+            
         
         </div>
      </div>
