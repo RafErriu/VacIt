@@ -36,8 +36,8 @@
                                 <a href="{{ path('register') }}">REGISTREREN</a>
                                 {% elseif is_granted('ROLE_WERKNEMER') %}
                                  <a href="{{ path('profiel') }}">MIJN PROFIEL</a>
-                                {% elseif is_granted('ROLE_BEDRIJF') %}
-                                  <a>MIJN PROFIEL</a>
+                                {% elseif is_granted('ROLE_WERKGEVER') %}
+                                  <a href="{{ path('profielWG')}}">MIJN PROFIEL</a>
                                 {% endif %}
                    </div>
               </a>
@@ -46,9 +46,9 @@
                   <div class="registreren"> 
                                 {% if not is_granted('ROLE_USER') %}
                                 {% elseif is_granted('ROLE_WERKNEMER') %}
-                                <a> MIJN SOLLICITATIES</a>
-                                {% elseif is_granted('ROLE_BEDRIJF') %}
-                                <a>MIJN VACATURES</a>
+                                <a href="{{ path('sollicitaties', { 'id' : app.user.id })}}"> MIJN SOLLICITATIES</a>
+                                {% elseif is_granted('ROLE_WERKGEVER') %}
+                                <a href="{{ path('werkgever', { 'id' : app.user.id }) }}">MIJN VACATURES</a>
                                 {% endif %}
                    </div>
               </a>

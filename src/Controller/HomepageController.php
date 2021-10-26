@@ -20,10 +20,12 @@ class HomepageController extends AbstractController
      */
     public function index()
     {
+     
+            $user = $this->getUser();
             $rep = $this->getDoctrine()->getRepository(Vacature::class);
             $vacatures = $rep->getAllVacatures();
             
-            return['vacatures' => $vacatures];
+            return['vacatures' => $vacatures, 'user' => $user];
     }
 
      /**
@@ -32,6 +34,7 @@ class HomepageController extends AbstractController
      */
     public function vacature($id)
     {
+       
         $rep = $this->getDoctrine()->getRepository(Vacature::class);
         $vacature = $rep->getVacature($id);
         

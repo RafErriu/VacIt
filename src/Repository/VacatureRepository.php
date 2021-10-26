@@ -30,6 +30,12 @@ class VacatureRepository extends ServiceEntityRepository
         return ($vacature);
     }
 
+    public function getVacatureWG($user) {
+
+        $vacatures = $this->findBy(array("werkgever" => $user));
+        return ($vacatures);
+    }
+
     public function nieuweVacature($vacatures){
         $vacature = new Vacature();
         $vacature->setTitel($vacatures["titel"]);

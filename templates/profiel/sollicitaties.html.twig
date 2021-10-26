@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProfielController!{% endblock %}
+
+{% block body %}
+<style>
+      .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="grid-x main">
+
+  
+    <div class="cell medium-8 vacature">
+    
+    {% for sollicitatie in sollicitaties %}   
+
+    <p>{{sollicitatie.datum.format('d/m/Y')}}</p>
+    <p>{{sollicitatie.vacature.titel}}</p>
+    <p>{{sollicitatie.vacature.werkgever.voornaam}}
+    <p>{{sollicitatie.uitgenodigd}}</p>
+{% endfor %}
+
+    </div>
+</div>
+{% endblock %}

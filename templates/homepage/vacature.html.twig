@@ -10,17 +10,17 @@
 
 <div class="grid-x main">
 
-        {{ dump(vacature)}}
-        {% for info in vacature %}
 
-    <div class="cell medium-8 ">
+		<div class="cell medium-8 ">
 
-    <div>{{info.id}}</div>
-    {{info.titel}}
-        {{ dump(info)}}
+			<div>{{vacature.id}}</div>
+			{{vacature.titel}}
+			<a href="{{ path('opslaanSollicitatie' , { 'id' : app.user.id }) }}">
+				<i class="fas fa-arrow-right" style ="color: red"></i><button type="submit" class="btn">OPSLAAN</button>
+			</a>
+		</div>
 
-    </div>
-        {% endfor %} 
 
-</div>
-{% endblock %}
+
+</div>{% endblock %}
+

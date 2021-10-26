@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\User;
 use App\Entity\Sollicitatie;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -19,6 +20,29 @@ class SollicitatieRepository extends ServiceEntityRepository
         parent::__construct($registry, Sollicitatie::class);
     }
 
+    public function getSollicitaties($user) {
+
+        $sollicitaties = $this->findBy(array("werknemer" => $user));
+        return ($sollicitaties);
+    }
+
+
+    public function saveSollicitatie($solli) {
+
+        $sollicitatie = new Sollicitatie();
+  
+        $datum = new \DateTime('@'.strtotime('now'));
+        $sollicitatie->setDatum($datum);
+        $sollicitatie->setUitgenodigd("N");
+
+
+        $em = $this->getEntityManager();
+        $em->flush();
+
+        return($sollicitatie);
+    }
+
+    
     // /**
     //  * @return Sollicitatie[] Returns an array of Sollicitatie objects
     //  */
