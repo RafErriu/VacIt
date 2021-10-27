@@ -4,32 +4,34 @@
 {% endblock %}
 
 {% block body %}
-	<style>
-		.example-wrapper {
-			margin: 1em auto;
-			max-width: 800px;
-			width: 95%;
-			font: 18px / 1.5 sans-serif;
-		}
-		.example-wrapper code {
-			background: #F5F5F5;
-			padding: 2px 6px;
-		}
-	</style>
 
-	<div class="grid-x main">
-		{% for vacature in vacatures %}
-			<div class="cell medium-8 vacature">
-				<div class="plaatje"><img src="{{asset(vacature.systeem.plaatje)}}"></div>
-				<div style="display: inline-block;">
-					<div>{{vacature.datum.format('d/m/Y')}}</div>
-					<div>{{vacature.titel}}</div>
-					<div class="omschrijving">{{vacature.omschrijving}}</div>
-					<a href="{{ path('vacature' , { 'id' : vacature.id }) }}">
-						<i class="fas fa-arrow-right arrow"></i>
-					</a>
+
+
+
+
+
+
+<div class="grid-x main" style="padding-bottom: 100px;">
+	{% for vacature in vacatures %}
+			<div class="cell small-4" ><img class="plaatje" src="{{asset(vacature.systeem.plaatje)}}"></div>
+			
+			<div class="cell small-4">
+				<div class="info">
+					<div style="font-weight: 600;">  {{vacature.datum.format('d/m/Y')}}</div>
+					<div style="font-family: Roboto Condensed; color: white; font-size: 32px">{{vacature.titel}}</div>
+					<div class="omschrijvingK">{{vacature.omschrijving}}</div>
 				</div>
 			</div>
-		{% endfor %}
-	</div>
+			
+			<div class="cell small-4">
+				<a href="{{ path('vacature' , { 'id' : vacature.id }) }}">
+					<i class="fas fa-arrow-right arrowK"></i>
+				</a>
+			</div>
+
+	
+		
+{% endfor %}
+</div>
 {% endblock %}
+

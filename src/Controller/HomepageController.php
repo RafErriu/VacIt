@@ -33,9 +33,7 @@ class HomepageController extends BaseController
      */
     public function vacature($id)
     {
-       
-        $rep = $this->getDoctrine()->getRepository(Vacature::class);
-        $vacature = $rep->getVacature($id);
+        $vacature = $this->vac->getVacature($id);
         
         return($this->render('homepage/vacature.html.twig', ['vacature' => $vacature]));
 }

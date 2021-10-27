@@ -17,7 +17,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 /**
  * @Route("/profiel")
  */
-class ProfielController extends AbstractController
+class ProfielController extends BaseController
 {
     /**
      * @Route("/", name= "profiel")
@@ -26,8 +26,7 @@ class ProfielController extends AbstractController
     public function ophalenProfiel()
     {
         $id = $this->getUser()->getId();
-        $rep = $this->getDoctrine()->getRepository(User::class);
-        $user = $rep->getOneUser($id);
+        $user = $this->use->getOneUser($id);
         
             return($this->render('profiel/index.html.twig',  ['user' => $user]));
             var_dump($user);
@@ -59,8 +58,7 @@ class ProfielController extends AbstractController
     public function ophalenSollicitaties($id)
     {
 
-    $rep = $this->getDoctrine()->getRepository(Sollicitatie::class);
-    $sollicitaties = $rep->getSollicitaties($id);
+    $sollicitaties = $this->sol->getSollicitaties($id);
 
     return($this->render('profiel/sollicitaties.html.twig', ['sollicitaties' => $sollicitaties]));
     var_dump($sollicitaties);    
@@ -83,8 +81,7 @@ class ProfielController extends AbstractController
             "datum" => new \DateTime('@'.strtotime('now'))
         );
 
-        $rep = $this->getDoctrine()->getRepository(Sollicitatie::class);
-        $data =  $rep->saveSollicitatie($params);
+        $save =  $this->sol->saveSollicitatie($params);
 
 
         return ($this->redirectToRoute('sollicitaties', ['id' => $user_id]));

@@ -13,7 +13,7 @@ use App\Entity\User;
 /**
  * @Route("/werkgever")
  */
-class WerkgeverController extends AbstractController
+class WerkgeverController extends BaseController
 {
     /**
      * @Route("/vacatures/{id}", name= "werkgever")]
@@ -22,8 +22,7 @@ class WerkgeverController extends AbstractController
     public function ophalenVacaturesWG($id)
     {
 
-        $rep = $this->getDoctrine()->getRepository(Vacature::class);
-        $vacatures = $rep->getVacatureWG($id);
+        $vacatures = $this->vac->getVacatureWG($id);
     
 
         return $this->render('werkgever/index.html.twig', ['vacatures' => $vacatures]);
@@ -36,8 +35,7 @@ class WerkgeverController extends AbstractController
     public function werkgeverProfiel()
     {
         $id = $this->getUser()->getId();
-        $rep = $this->getDoctrine()->getRepository(User::class);
-        $user = $rep->getOneUser($id);
+        $user = $this->use->getOneUser($id);
     
 
         return $this->render('werkgever/profielWG.html.twig', ['user' => $user]);

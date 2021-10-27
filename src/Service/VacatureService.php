@@ -17,4 +17,17 @@ class VacatureService {
         return($vacatures);
     }
 
+    public function getVacature($id)
+    {
+        $vacature = $this->rep->getVacature($id);
+        return ($vacature);
+    }
+
+    public function getVacatureWG($user) {
+
+        $vacature = $this->rep->getVacatureWG($user);
+        return ($vacature);
+    }
+
+
 }

@@ -27,12 +27,10 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         return($users);
     }
 
-    
     public function getOneUser($id) {
         $user = $this->find($id);
         return($user);
     }
-
 
     public function aanpassenUser($params){
 
