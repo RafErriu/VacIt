@@ -34,29 +34,32 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     }
 
 
-    public function nieuweUser($params){
-        $user = new User();
-        $profiel=$this->find($params["id"]);
-        $user->setEmail($params["email"]);
-        $user->setPassword($params["password"]);
-        $user->setRoles($params["roles"]);
-        $user->setVoornaam($params["voornaam"]) ;
-        $user->setAchternaam($params["achternaam"]);
-        $user->setGeboortedatum($params["geboortedatum"]);
-        $user->setTelefoonnummer($params["telefoonnummer"]);
-        $user->setAdres($params["adres"]);
-        $user->setPostcode($params["postcode"]);
-        $user->setWoonplaats($params["woonplaats"]);
-        $user->setMotivatie($params["motivatie"]);
-        $user->setCV($params["cv"]);
-        $user->setRecordType($params["record_type"]);       
+    public function aanpassenUser($params){
 
         $em = $this->getEntityManager();
+
+        if(isset($params['id'])) {
+            $user = $this->find($params['id']);
+        }
+        else {
+            $user = new User();
+        }
+
+            $user->setVoornaam($params['voornaam']);
+            $user->setAchternaam($params['achternaam']);
+            $user->setEmail($params['email']);
+            $user->setGeboortedatum($params["geboortedatum"]);
+            $user->setTelefoonnummer($params["telefoonnummer"]);
+            $user->setAdres($params["adres"]);
+            $user->setPostcode($params["postcode"]);
+            $user->setWoonplaats($params['woonplaats']);
+            $user->setMotivatie($params["motivatie"]);
+
+
         $em->persist($user);
         $em->flush();
         
         return ($user);
-        echo "User toegevoegd!";
     }
 
 

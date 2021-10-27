@@ -15,7 +15,7 @@
 
 			<div>{{vacature.id}}</div>
 			{{vacature.titel}}
-			<a href="{{ path('opslaanSollicitatie' , { 'id' : app.user.id }) }}">
+			<a href="{{ path('opslaanSollicitatie' , { 'id' : vacature.id } ) }}">
 				<i class="fas fa-arrow-right" style ="color: red"></i><button type="submit" class="btn">OPSLAAN</button>
 			</a>
 		</div>

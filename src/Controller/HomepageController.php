@@ -12,7 +12,7 @@ use App\Entity\Systeem;
 /**
  * @Route("/")
  */
-class HomepageController extends AbstractController
+class HomepageController extends BaseController
 {
     /**
      * @Route("/", name= "homepage")
@@ -22,8 +22,7 @@ class HomepageController extends AbstractController
     {
      
             $user = $this->getUser();
-            $rep = $this->getDoctrine()->getRepository(Vacature::class);
-            $vacatures = $rep->getAllVacatures();
+            $vacatures = $this->vac->getAllVacatures();
             
             return['vacatures' => $vacatures, 'user' => $user];
     }

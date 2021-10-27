@@ -6,8 +6,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\Request;
 use App\Entity\User;
 use App\Entity\Sollicitatie;
+use App\Entity\Vacature;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
 
@@ -32,6 +34,25 @@ class ProfielController extends AbstractController
     }   
 
     /**
+     * @Route("/saveProfiel/{id}", name= "saveProfiel")
+     * @Template()
+     */
+    public function saveProfiel($id)
+    {
+        $user = $this->getUser();
+        $user_id = $user->getId();
+        
+        $params = array(
+            "woonplaats" => "Hallo",
+  
+        );        $rep = $this->getDoctrine()->getRepository(User::class);
+        $user = $rep->aanpassenUser($params);
+
+        return $this->redirectToRoute('profiel', ['id' => $user_id]);
+
+    }   
+
+    /**
      * @Route("/sollicitaties/{id}", name="sollicitaties")
      * @Template()
      */
@@ -47,30 +68,27 @@ class ProfielController extends AbstractController
 
  /**
      * @Route("/opslaanSollicitatie/{id}", name="opslaanSollicitatie")
+     * @Template()
      */
-    public function opslaanSollicitatie($id): RedirectResponse
+    public function opslaanSollicitatie($id)
     {   
         $user = $this->getUser();
         $user_id = $user->getId();
 
-        $solli = array(
-            "werknemer_id" => $user_id,
+
+        $params = array(
+            "werknemer" => $user_id,
             "vacature_id" => $id,
             "uitgenodigd" => "N",
-            
+            "datum" => new \DateTime('@'.strtotime('now'))
         );
+
         $rep = $this->getDoctrine()->getRepository(Sollicitatie::class);
-        $sollicitaties = $rep->saveSollicitatie($solli);
-        return $this->redirectToRoute('sollicitaties', ['id' => $user_id, 'sollicitaties' => $sollicitaties]);
+        $data =  $rep->saveSollicitatie($params);
 
-        
-     
 
+        return ($this->redirectToRoute('sollicitaties', ['id' => $user_id]));
     }
-}
-
-    
-    
-   
 
 
+}   

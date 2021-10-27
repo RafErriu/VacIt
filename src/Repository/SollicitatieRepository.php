@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\User;
 use App\Entity\Sollicitatie;
+use App\Entity\Vacature;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -26,21 +27,32 @@ class SollicitatieRepository extends ServiceEntityRepository
         return ($sollicitaties);
     }
 
-
-    public function saveSollicitatie($solli) {
+    public function saveSollicitatie($params) {
+        
 
         $sollicitatie = new Sollicitatie();
-  
-        $datum = new \DateTime('@'.strtotime('now'));
-        $sollicitatie->setDatum($datum);
-        $sollicitatie->setUitgenodigd("N");
-
 
         $em = $this->getEntityManager();
+
+        $vacatures = $em->getRepository(Vacature::class);
+        $users = $em->getRepository(User::class);
+
+        $vacature = $vacatures->find($params["vacature_id"]);
+        $werknemer = $users->find($params["werknemer"]);
+
+        $sollicitatie->setVacature($vacature);
+        $sollicitatie->setUitgenodigd($params['uitgenodigd']);
+        $sollicitatie->setDatum($params['datum']);
+        $sollicitatie->setWerknemer($werknemer);
+
+        $em->persist($sollicitatie);
+
         $em->flush();
 
         return($sollicitatie);
     }
+
+
 
     
     // /**

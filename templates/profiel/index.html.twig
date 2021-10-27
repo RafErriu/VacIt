@@ -23,7 +23,7 @@
 		<div class="cell medium-8 vacature">
 
 			<p>MIJN PROFIEL</p>
-			<form role="form">
+			<form role="form" action="{{ path('saveProfiel', {id: user.id}) }}" method="POST">
 				<div class="form-group">
 					<label>
 						<p class="">Voornaam</p>
@@ -79,9 +79,9 @@
 					</label>
 					<input type="text" value="{{user.Woonplaats}}" class="line">
 				</div>
-
-                <i class="fas fa-arrow-right" style ="color: red"></i><button type="submit" class="btn">OPSLAAN</button>
-
+				<a href=">
+                <i class="fas fa-arrow-right" style ="color: red"></i><button type="submit" id="submit" class="btn">OPSLAAN</button>
+				</a>
 			</form>
 		</div>
 
