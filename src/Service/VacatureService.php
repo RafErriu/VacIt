@@ -29,5 +29,11 @@ class VacatureService {
         return ($vacature);
     }
 
+    public function bedrijfVacatures($werkgever_id) {
+        $vacatures = $this->rep->bedrijfVacatures($werkgever_id);
+        return($vacatures);
+    }
+    
+
 
 }

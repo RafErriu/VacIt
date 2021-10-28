@@ -34,8 +34,10 @@ class HomepageController extends BaseController
     public function vacature($id)
     {
         $vacature = $this->vac->getVacature($id);
-        
-        return($this->render('homepage/vacature.html.twig', ['vacature' => $vacature]));
+        $werkgever_id = $vacature->getWerkgever()->getId();
+        $vacatures = $this->vac->bedrijfVacatures($werkgever_id);
+
+        return($this->render('homepage/vacature.html.twig', ['vacature' => $vacature, 'vacatures' => $vacatures]));
 }
     
      /**

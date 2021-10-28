@@ -1,26 +1,71 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}VacIt Homepage{% endblock %}
+{% block title %}VacIt Detailpage{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="grid-x main">
 
 
-		<div class="cell medium-8 ">
+<div class="grid-x">
 
-			<div>{{vacature.id}}</div>
-			{{vacature.titel}}
-			<a href="{{ path('opslaanSollicitatie' , { 'id' : vacature.id } ) }}">
-				<i class="fas fa-arrow-right" style ="color: red"></i><button type="submit" class="btn">OPSLAAN</button>
-			</a>
-		</div>
+	<div class="cell small-4 " >
+		<div class="vac-logo"></div>
+	</div>
+
+	<div class="cell small-4 " style="margin-top: 80px; margin-left: -50px;">
+		<div class="vac-date">{{vacature.datum.format('d/m/Y')}}</div>
+		<div class="vac-titel">{{vacature.titel}}</div>
+	</div>
+
+
+	<div class="cell small-4 " style="margin-left: -425px;  ">
+		<div class="vac-niv">NIVEAU:</div>		
+		<div class="vac-niveau">{{vacature.niveau}}</div>
+		<i class="fas fa-map-marker-alt vac-marker"></i><div class="vac-plaats">{{vacature.werkgever.woonplaats}}</div>
+	</div>
+</div>
+
+<div class="grid-x ">
+	<div class="cell small-11">
+	<div class="vac-omschrijving">{{vacature.omschrijving}}</div>
+	</div>
+</div>
+
+<div class="grid-x ">
+	<div class="cell small-6" style="color: #F15A24; margin-left: 150px;">
+		<a href="{{ path('opslaanSollicitatie' , { 'id' : vacature.id } ) }}">
+			<i class="fas fa-arrow-right vac-arrow"></i>
+			<button type="submit" class="btn knop">SOLICITEER DIRECT</button>
+		</a>
+	</div>
+</div>
+
+<div class="grid-x " style="margin-left:230px; margin-top: -25px;">
+	<div class="cell small-6" style ="font-family: Bebas Neue; font-size: 35px;  font-weight: 500;">
+		<div class="vac-meer">MEER VACATURES VAN</div><div class="vac-werkgever">{{vacature.werkgever.voornaam}}</div>
+	</div>
+</div>
+
+<div class="grid-x werk-info " style="">
+	<div class="cell small-3" style ="">DATUM</div>
+	<div class="cell small-5">VACATURE</div>
+	<div class="cell small-3">NIVEAU</div>
+	</div>
+</div>
+
+<div class="grid-x werk-gegevens" style="padding-bottom: 100px;">
+	
+	{% for bedrijfvac in vacatures %}
+	{% if bedrijfvac.id != vacature.id %}
+	<div class="cell small-3" style ="color:grey">{{bedrijfvac.datum.format('d/m/Y')}}</div>
+	<div class="cell small-5" style="color:#F15A24;">{{bedrijfvac.titel}}</div>
+	<div class="cell small-3" style="color:grey">{{bedrijfvac.niveau}}</div>
+	<div class="werk-line"></div>
+	{% endif %}
+	{% endfor %}
+	</div>
+</div>
 
 
 
-</div>{% endblock %}
+{% endblock %}
 

@@ -44,8 +44,7 @@ class ProfielController extends BaseController
         $params = array(
             "woonplaats" => "Hallo",
   
-        );        $rep = $this->getDoctrine()->getRepository(User::class);
-        $user = $rep->aanpassenUser($params);
+        );        $user = $this->use->aanpassenUser($params);
 
         return $this->redirectToRoute('profiel', ['id' => $user_id]);
 

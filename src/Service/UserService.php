@@ -17,4 +17,9 @@ class UserService {
         return($user);
     }
 
+    public function aanpassenUser($params){
+        $user=$this->rep->aanpassenUser($params);
+        return($user);
+    }
+
 }

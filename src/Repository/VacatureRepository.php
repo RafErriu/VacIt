@@ -30,6 +30,11 @@ class VacatureRepository extends ServiceEntityRepository
         return ($vacature);
     }
 
+    public function bedrijfVacatures($werkgever_id) {
+        $vacatures = $this->findBy(array("werkgever" => $werkgever_id));
+        return($vacatures);
+    }
+    
     public function getVacatureWG($user) {
 
         $vacatures = $this->findBy(array("werkgever" => $user));
