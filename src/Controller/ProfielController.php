@@ -33,22 +33,37 @@ class ProfielController extends BaseController
     }   
 
     /**
-     * @Route("/saveProfiel/{id}", name= "saveProfiel")
+     * @Route("/updateProfiel/{id}", name= "updateProfiel")
      * @Template()
      */
-    public function saveProfiel($id)
+    public function updateProfiel($id, Request $request)
     {
+        $params = $request->request->all();
+
         $user = $this->getUser();
         $user_id = $user->getId();
+        $profiel = $this->use->aanpassenUser($params);
+
         
-        $params = array(
-            "woonplaats" => "Hallo",
-  
-        );        $user = $this->use->aanpassenUser($params);
-
         return $this->redirectToRoute('profiel', ['id' => $user_id]);
-
     }   
+
+    /**
+     * @Route("/saveProfiel", name="saveProfiel")
+     */
+    public function saveProfiel(Request $request)
+    {
+
+        $user = $this->getUser();
+        $user_id = $user->getId();
+
+        if(!$profiel){
+            return $this->redirectToRoute('profiel', ['id' => $user_id]);
+        }
+        $this->addFlash('notice', $profiel);
+        return $this->redirectToRoute('updateProfiel', ['id' => $user_id]);
+  
+    }
 
     /**
      * @Route("/sollicitaties/{id}", name="sollicitaties")
@@ -56,11 +71,9 @@ class ProfielController extends BaseController
      */
     public function ophalenSollicitaties($id)
     {
-
     $sollicitaties = $this->sol->getSollicitaties($id);
 
     return($this->render('profiel/sollicitaties.html.twig', ['sollicitaties' => $sollicitaties]));
-    var_dump($sollicitaties);    
 }
 
  /**
@@ -72,12 +85,9 @@ class ProfielController extends BaseController
         $user = $this->getUser();
         $user_id = $user->getId();
 
-
         $params = array(
             "werknemer" => $user_id,
             "vacature_id" => $id,
-            "uitgenodigd" => "N",
-            "datum" => new \DateTime('@'.strtotime('now'))
         );
 
         $save =  $this->sol->saveSollicitatie($params);

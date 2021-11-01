@@ -29,20 +29,23 @@ class SollicitatieRepository extends ServiceEntityRepository
 
     public function saveSollicitatie($params) {
         
-
-        $sollicitatie = new Sollicitatie();
-
+    
         $em = $this->getEntityManager();
 
         $vacatures = $em->getRepository(Vacature::class);
         $users = $em->getRepository(User::class);
 
+        if(isset($params["vacture"])){
+            $sollicitatie = $this->find($params["vacature"]);
+        }else{
+            $sollicitatie = new Sollicitatie();
+        }
         $vacature = $vacatures->find($params["vacature_id"]);
         $werknemer = $users->find($params["werknemer"]);
 
         $sollicitatie->setVacature($vacature);
-        $sollicitatie->setUitgenodigd($params['uitgenodigd']);
-        $sollicitatie->setDatum($params['datum']);
+        $sollicitatie->setUitgenodigd("N");
+        $sollicitatie->setDatum(new \DateTime('@'.strtotime('now')));
         $sollicitatie->setWerknemer($werknemer);
 
         $em->persist($sollicitatie);
@@ -50,6 +53,13 @@ class SollicitatieRepository extends ServiceEntityRepository
         $em->flush();
 
         return($sollicitatie);
+    }
+
+    public function getSolliVacci($werkgever) {
+        $users = $em->getRepository(Vacature::class);
+
+        $sollicitaties = $this->findBy(array("werkgever" => $user));
+        return ($sollicitaties);
     }
 
 

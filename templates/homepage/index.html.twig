@@ -7,27 +7,23 @@
 
 
 
-
-
-
-
-<div class="grid-x main" style="padding-bottom: 100px;">
+<div class="grid-x main" style="">
 	{% for vacature in vacatures %}
-			<div class="cell small-4" ><img class="plaatje" src="{{asset(vacature.systeem.plaatje)}}"></div>
+			<div class="cell small-4 plaatje ">
+				<div class="hexagon"></div>
+				<img src="{{asset(vacature.systeem.plaatje)}}" class="imageHex">
+			</div>
 			
-			<div class="cell small-4">
-				<div class="info">
+			<div class="cell small-8 info" >
 					<div style="font-weight: 600;">  {{vacature.datum.format('d/m/Y')}}</div>
 					<div style="font-family: Roboto Condensed; color: white; font-size: 32px">{{vacature.titel}}</div>
 					<div class="omschrijvingK">{{vacature.omschrijving}}</div>
-				</div>
-			</div>
-			
-			<div class="cell small-4">
-				<a href="{{ path('vacature' , { 'id' : vacature.id }) }}">
-					<i class="fas fa-arrow-right arrowK"></i>
+					<a href="{{ path('vacature' , { 'id' : vacature.id }) }}">
+					<i class="fas fa-arrow-right arrowK" style=""></i>
 				</a>
 			</div>
+			
+
 
 	
 		

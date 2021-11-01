@@ -34,25 +34,27 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
 
     public function aanpassenUser($params){
 
-        $em = $this->getEntityManager();
-
-        if(isset($params['id'])) {
-            $user = $this->find($params['id']);
-        }
-        else {
+            if(isset($params["id"]))
+            {
+            $user = $this->find($params["id"]);
+            } else{
+            
             $user = new User();
         }
+        
+        $em = $this->getEntityManager();
 
+        if(isset($params['voornaam'])) {
             $user->setVoornaam($params['voornaam']);
-            $user->setAchternaam($params['achternaam']);
+        }
+        if(isset($params['email'])) {
             $user->setEmail($params['email']);
-            $user->setGeboortedatum($params["geboortedatum"]);
-            $user->setTelefoonnummer($params["telefoonnummer"]);
-            $user->setAdres($params["adres"]);
-            $user->setPostcode($params["postcode"]);
-            $user->setWoonplaats($params['woonplaats']);
-            $user->setMotivatie($params["motivatie"]);
+        }
 
+        $user->setAdres($params['adres']);
+        $user->setWoonplaats($params['email']);
+
+     
 
         $em->persist($user);
         $em->flush();

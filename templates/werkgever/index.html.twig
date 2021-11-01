@@ -3,22 +3,36 @@
 {% block title %}Hello WerkgeverController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="grid-x main">
-
-
-		<div class="cell medium-8 ">
-        Hello
-            {% for vacature in vacatures %}   
-
-            <p>{{vacature.titel}}</p>
-            <p>{{vacature.omschrijving}}</p>
-
-			{% endfor %}
-		</div>
+<div class="grid-x">
+    <div class="cell medium-12" style=" margin-top: 100px; margin-left: 150px;">
+            <h2 class="mijn-sol">MIJN VACATURES</h2>
+    </div>
 </div>
+
+<div class="grid-x sollicitatie-info " style="">
+	<div class="cell small-2" style ="">DATUM</div>
+	<div class="cell small-4">VACATURE</div>
+    	<div class="cell small-3">SOLLICITANTEN</div>
+	<div class="cell small-3">CV</div>
+	</div>
+
+	<div class="cell small-3" style="color:grey"></div>
+
+
+<div class="grid-x sollicitatie-gegevens" style="padding-bottom: 750px;">
+	{% for vacature in vacatures %}
+
+	<div class="cell small-2" style ="color:grey">{{vacature.datum.format('d/m/Y')}}</div>
+		    <div class="cell small-4"style="color:#F15A24; " >{{vacature.titel}}</div>
+                	
+  	<div class="cell small-3"  ><i class="fas fa-check" style="color:#F15A24; font-size:30px; margin-left: 50px;"></i></div>
+	<div class="werk-line"></div>
+	</div>
+
+    {% endfor %}
+</div>
+    
+
+
 {% endblock %}

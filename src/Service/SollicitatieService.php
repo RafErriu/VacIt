@@ -24,4 +24,9 @@ class SollicitatieService {
         return($sollicitatie);
     }
 
+    public function getSolliVacci($werkgever) {
+        $sollicitaties=$this->rep->getSolliVacci($werkgever);
+        return($sollicitaties);
+    }
+
 }

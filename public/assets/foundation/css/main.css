@@ -28,7 +28,6 @@ body a {
 
   body a:hover{
     color: #F15A24;
-    box-shadow:   0 0 11px rgba(33,33,33,.2); 
   }
   
   .registreren {
@@ -75,21 +74,38 @@ body a {
 }
 
 .plaatje {
-    width: 180px; 
-    margin-top: 90px;
-    margin-left: 50px;
+    color: white;
+    margin-left: -125px;
+    margin-top: 120px;
     display:inline-block;
 }
 
+.hexagon {
+    background-color: rgb(38, 36, 36);
+    clip-path: polygon(0% 50%, 25% 100%, 75% 100%, 100% 50%, 75% 0%, 25% 0%);
+    height: 140px;
+    width: 160px;
+    z-index: 4;
+    margin-left: 150px;
+    }
+
+.imageHex {
+    width: 85px;
+    margin-left: 190px;
+    margin-top: -165px;
+    z-index: 15;
+    position: relative;
+}
+
 .info {
-    margin-top: 80px;
+    margin-top: 100px;
     display: inline-block;
 }
 
 .omschrijvingK{
     overflow: hidden;
     text-overflow: ellipsis;
-    width: 550px;
+    width: 700px;
     height:60px;
     white-space: initial;
     display: -webkit-inline-box;
@@ -102,7 +118,7 @@ body a {
 .omschrijving {
     overflow: hidden;
     text-overflow: ellipsis;
-    width: 700px;
+    width: 500px;
     height:50px;
     white-space: initial;
     display: -webkit-inline-box;
@@ -110,18 +126,12 @@ body a {
     -webkit-box-orient: vertical;
 }
 
-.arrow {
-    color: white;
-    font-size: 80px;
-    display: inline-block;
-    margin-left: 100px;
-}
+
 
 .arrowK {
     color: white;
     font-size: 80px;
-    margin-left: -320px;
-    margin-top:  260px;
+
 }
 
 input.line{
@@ -183,8 +193,29 @@ input.line{
     margin-left: 430px;
     color: #F15A24;
 }
-.vac-logo {
-    margin-right: 100px;
+
+.plaatjeVac {
+    color: white;
+margin-left: -125px;
+margin-top: 120px;
+display:inline-block;
+}
+
+.hexagonVac{
+background-color: rgb(38, 36, 36);
+clip-path: polygon(0% 50%, 25% 100%, 75% 100%, 100% 50%, 75% 0%, 25% 0%);
+height: 140px;
+width: 160px;
+z-index: 4;
+margin-left: 150px;
+}
+
+.imageHexVac {
+width: 85px;
+margin-left: 190px;
+margin-top: -170px;
+z-index: 15;
+position: relative;
 }
 
 .vac-date {
@@ -202,10 +233,10 @@ input.line{
 .vac-niv {
     color: #F15A24; 
     display: inline-block;
-    margin-top: 200px;
     font-size: 40px;
     font-family: Bebas Neue;
  display: inline-block;
+ 
 
 }
 .vac-niveau {
@@ -217,17 +248,14 @@ input.line{
 .vac-marker {
     font-size: 40px;
     color: #F15A24;
-    margin-left: 315px;
-    margin-top: 210px;
-    position: absolute;
+    display: inline;
 
 }
 
 .vac-plaats{
-    margin-left: 540px;
-    margin-top: -55px;
     font-size: 40px;
     font-family: Bebas Neue;
+    display: inline;
 }
 
 .vac-omschrijving {
@@ -280,5 +308,27 @@ display:inline;
         box-shadow: none; 
         border-bottom: 3px solid grey;
         width: 90%;
+        margin-bottom: 30px;
     }
 
+.mijn-sol {
+    color: #F15A24; 
+    font-family: Bebas Neue; 
+    font-size: 60px;
+}
+
+.sollicitatie-info {
+    padding-bottom: 100px; 
+    margin-left:152px;
+    font-family: Roboto Condensed; 
+    font-size: 22px; 
+    font-weight: 600;
+}
+
+.sollicitatie-gegevens {
+    margin-left:152px;
+    font-family: Roboto Condensed; 
+    font-size: 23px;
+    margin-top: -60px;
+    font-weight: 500;
+}

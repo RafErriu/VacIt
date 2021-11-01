@@ -7,24 +7,31 @@
 
 <div class="grid-x">
 
-	<div class="cell small-4 " >
-		<div class="vac-logo"></div>
+	<div class="cell small-4  plaatjeVac" >
+	<div class="hexagonVac"></div>
+				<img src="{{asset(vacature.systeem.plaatje)}}" class="imageHexVac">
 	</div>
 
-	<div class="cell small-4 " style="margin-top: 80px; margin-left: -50px;">
+	<div class="cell small-8 " style="margin-top: 80px; margin-left: 20px;">
 		<div class="vac-date">{{vacature.datum.format('d/m/Y')}}</div>
 		<div class="vac-titel">{{vacature.titel}}</div>
 	</div>
-
-
-	<div class="cell small-4 " style="margin-left: -425px;  ">
-		<div class="vac-niv">NIVEAU:</div>		
-		<div class="vac-niveau">{{vacature.niveau}}</div>
-		<i class="fas fa-map-marker-alt vac-marker"></i><div class="vac-plaats">{{vacature.werkgever.woonplaats}}</div>
-	</div>
 </div>
 
-<div class="grid-x ">
+<div class ="grid-x" style="margin-top: -100px;">
+	
+	<div class="cell small-3 " style="margin-left: 225px">
+		<div class="vac-niv">NIVEAU:</div>		
+		<div class="vac-niveau">{{vacature.niveau}}</div>
+	</div>
+	
+	<div class="cell small-3" style="margin-left: 175px; text-align:right;">
+		<i class="fas fa-map-marker-alt vac-marker"></i><div class="vac-plaats">{{vacature.werkgever.woonplaats}}</div>
+	</div>
+
+</div>
+
+<div class="grid-x " style="margin-top: 20px;">
 	<div class="cell small-11">
 	<div class="vac-omschrijving">{{vacature.omschrijving}}</div>
 	</div>
@@ -57,7 +64,7 @@
 	{% for bedrijfvac in vacatures %}
 	{% if bedrijfvac.id != vacature.id %}
 	<div class="cell small-3" style ="color:grey">{{bedrijfvac.datum.format('d/m/Y')}}</div>
-	<div class="cell small-5" style="color:#F15A24;">{{bedrijfvac.titel}}</div>
+     <a href="{{ path('vacature' , { 'id' : bedrijfvac.id }) }}" class="cell small-5" style="color:#F15A24;">{{bedrijfvac.titel}}</a>
 	<div class="cell small-3" style="color:grey">{{bedrijfvac.niveau}}</div>
 	<div class="werk-line"></div>
 	{% endif %}

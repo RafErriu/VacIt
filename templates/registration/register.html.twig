@@ -3,15 +3,22 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
+
 <div class="grid-x">
-    <div class="cell medium-8 vacature">
-    <h1>Register</h1>
+
+    <div class="cell small-4 " >
+		<img src="{{ asset('assets/images/vacit-login.png')}}" class="log-logo">
+    </div>
+
+    <div class="cell small-8 login">
+
+        <h2 style="color: #F15A24; font-family: Bebas Neue; font; font-size: 60px;">REGISTER</h2>
 
     {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
+        <div class="line">{{ form_row(registrationForm.email) }}</div>
     
         {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
+             class:'line', label: 'Password'
         }) }}
     
         
