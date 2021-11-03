@@ -4,8 +4,24 @@
 {% endblock %}
 
 {% block body %}
+<script>
 
+    
+{% for vacature in vacatures %}
+$("#example, body").vegas({
+    slides: [
+        { src: "/assets/images.lunx-logo.png" },
+        { src: "{{asset(vacature.systeem.plaatje)}}"},
+        { src: "/img/slide3.jpg" },
+        { src: "/img/slide4.jpg" }
+    ]
+});
+{% endfor %}
+</script>
 
+<div class="grid-x main">
+
+</div>
 
 <div class="grid-x main" style="">
 	{% for vacature in vacatures %}
