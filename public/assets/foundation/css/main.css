@@ -91,7 +91,7 @@ body a {
 
 .imageHex {
     width: 85px;
-    margin-left: 190px;
+    margin-left: 185px;
     margin-top: -165px;
     z-index: 15;
     position: relative;
@@ -138,8 +138,33 @@ input.line{
     border:none; 
     box-shadow: none; 
     border-bottom: 3px solid #F15A24;
-    width: 75%;
+    width: 90%;
+    font-family: Roboto Condensed;
+    font-size: 40px;
+    font-weight: 500;
+
 }
+
+input.line2{
+    border:none; 
+    box-shadow: none; 
+    border-bottom: 3px solid #F15A24;
+    width: 90%;
+    font-family: Roboto Condensed;
+    font-size: 40px;
+    font-weight: 500;
+}
+
+input.line3{
+    border:none; 
+    box-shadow: none; 
+    border-bottom: 3px solid #F15A24;
+    width: 93%;
+    font-family: Roboto Condensed;
+    font-size: 40px;
+    font-weight: 500;
+}
+
 
 .footer-line {
      position: absolute;
@@ -212,7 +237,7 @@ margin-left: 150px;
 
 .imageHexVac {
 width: 85px;
-margin-left: 190px;
+margin-left: 195px;
 margin-top: -170px;
 z-index: 15;
 position: relative;
@@ -225,6 +250,7 @@ position: relative;
 }
 
 .vac-titel {
+    margin-top: -10px;
     font-size: 50px;
     font-family: Bebas Neue;
     width: 800px;
@@ -303,6 +329,7 @@ display:inline;
     margin-top: -60px;
     font-weight: 500;
 }
+
 .werk-line {
         border:none; 
         box-shadow: none; 
@@ -332,3 +359,10 @@ display:inline;
     margin-top: -60px;
     font-weight: 500;
 }
+
+.mijnprofiel {
+    font-family: Bebas Neue; 
+    font-size: 65px; 
+    color: #F15A24;
+}
+

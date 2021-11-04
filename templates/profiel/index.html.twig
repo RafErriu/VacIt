@@ -17,73 +17,112 @@
 		}
 	</style>
 
-	<div class="grid-x ">
+	<div class="grid-x" style="position: absolute">
 
+	<div class="cell small-4  plaatjeVac" >
+	<div class="hexagonVac"></div>
+				<img src="" class="imageHexVac">
+	</div>
+	</div>
 
-		<div class="cell medium-8 vacature">
+<div class="grid-x" style="margin-left: 243px;">
+	<div class="cell small-6 " style="margin-top: 130px; ">
+		<div class="mijnprofiel">MIJN PROFIEL</div>
+	</div>
+</div>
 
-			<p>MIJN PROFIEL</p>
-			<form role="form" action="{{ path('updateProfiel', {id: user.id}) }}" >
+<div class="grid-x" style="margin-left: 243px; padding-bottom: 20px;">
+		<div class="cell small-3 " style="">
+			<form role="form" action="{{ path('updateProfiel', {id: user.id}) }}" method="POST">
+				
 				<div class="form-group">
-					<label>
+					<label for="voornaam">
 						<p class="">Voornaam</p>
 					</label>
-					<input type="text" value="{{user.voornaam}}" class="line">
+					<input type="text"  id="voornaam" value="{{user.voornaam}}" class="line2">
 				</div>
+		</div>
 
-				<div class="form-group">
-					<label>
-						<p class="">Achternaam</p>
+				<div class="cell small-8 form-group" >
+					<label for="achternaam">
+						<p >Achternaam</p>
 					</label>
-					<input type="text" value="{{user.achternaam}}" class="line">
+					<input type="text"  id="achternaam" value="{{user.achternaam}}" class="line">
 				</div>
-                
-            	<div class="form-group">
-					<label>
+	</div>
+
+    <div class="grid-x" style="margin-left: 243px; padding-bottom: 20px;">
+            	<div class="cell small-11 form-group">
+					<label for="email">
 						<p class="">email</p>
 					</label>
-					<input type="text" value="{{user.email}}" class="line">
+					<input type="email"  name="email" id="email" value="{{user.email}}" class="line3">
 				</div>
-            
-            	<div class="form-group">
-					<label>
+	</div>
+
+       <div class="grid-x" style="margin-left: 243px; padding-bottom: 20px;">
+            	<div class="cell small-3 form-group">
+					<label for="geboortedatum">
 						<p class="">geboortedatum</p>
 					</label>
-					<input type="text" value="{{user.geboortedatum}}" class="line">
+					<input type="geboortedatum" name="geboortedatum" id="geboortedatum" value="{{user.geboortedatum}}" class="line2">
 				</div>
 
-            	<div class="form-group">
-					<label>
+            	<div class="cell small-8 form-group">
+					<label for="telefoonnummer">
 						<p class="">telefoonnummer</p>
 					</label>
-					<input type="text" value="{{user.telefoonnummer}}" class="line">
+					<input type="telefoonnummer" name="telefoonnummer" id="telefoonnummer" value="{{user.telefoonnummer}}" class="line">
 				</div>
+			</div>
+	    
+		<div class="grid-x" style="margin-left: 243px; padding-bottom: 20px;">
 
-            	<div class="form-group">
-					<label>
+            	<div class="cell small-11 form-group" style= "">
+					<label for="adres">
 						<p class="">adres</p>
 					</label>
-					<input type="text" value="{{user.adres}}" class="line">
+					<input type="adres" id="adres" name="adres" value="{{user.adres}}" class="line3">
 				</div>
+		</div>
 
-            	<div class="form-group">
-					<label>
+		<div class="grid-x" style="margin-left: 243px; margin-bottom: -80px;" >
+
+            	<div class="cell small-3 form-group">
+					<label for="postcode">
 						<p class="">Postcode</p>
 					</label>
-					<input type="text" value="{{user.postcode}}" class="line">
+					<input type="postcode" id="postcode" name="postcode" value="{{user.postcode}}" class="line2">
 				</div>
 
-            	<div class="form-group">
-					<label>
+            	<div class="cell small-8 form-group">
+					<label for="woonplaats">
 						<p class="">Woonplaats</p>
 					</label>
-					<input type="text" value="{{user.Woonplaats}}" class="line">
+					<input type="woonplaats" id="woonplaats" name="woonplaats" value="{{user.Woonplaats}}" class="line">
 				</div>
-				<a href=">
-                <i class="fas fa-arrow-right" style ="color: red"></i><button type="submit" id="submit" class="btn">OPSLAAN</button>
-				</a>
+		</div>
+
+		
+		<div class="grid-x">
+			<div class="cell small-8 " style="margin-top: 130px; margin-left: 240px; ">
+				<div class="mijnprofiel">MOTIVATIE</div>
+			</div>
+		</div>
+
+			<div class="grid-x">
+				<div class="cell small-8 " style="margin-left: 240px; color: grey; font-size: 20px;  font-style: italic;">
+				{{user.motivatie}}
+			</div>
+		</div>
+
+			<div class="grid-x">
+				<div class="cell small-8 " style="margin-left: 240px; color: grey; font-size: 20px;  font-style: italic;">
+			</div>
+		</div class="cell small-4">
+                <i class="fas fa-arrow-right vac-arrow" style ="padding-bottom: 50px; margin-left: 600px;" ></i><button type="submit" id="submit" class="btn knop" style="margin-top: 10px;">OPSLAAN</button>
+		</div>
 			</form>
 		</div>
 
-	</div>
 {% endblock %}

@@ -5,7 +5,7 @@
 {% block body %}
 
 <div class="grid-x">
-    <div class="cell medium-12" style=" margin-top: 100px; margin-left: 150px;">
+    <div class="cell small-8" style=" margin-top: 100px; margin-left: 150px;">
             <h2 class="mijn-sol">MIJN VACATURES</h2>
     </div>
 </div>
@@ -17,22 +17,28 @@
 	<div class="cell small-3">CV</div>
 	</div>
 
-	<div class="cell small-3" style="color:grey"></div>
 
 
 <div class="grid-x sollicitatie-gegevens" style="padding-bottom: 750px;">
 	{% for vacature in vacatures %}
 
 	<div class="cell small-2" style ="color:grey">{{vacature.datum.format('d/m/Y')}}</div>
-		    <div class="cell small-4"style="color:#F15A24; " >{{vacature.titel}}</div>
+		    <div class="cell small-4"><a style="color:#F15A24; " href="{{ path('vacature' , { 'id' : vacature.id }) }}">
+			{{vacature.titel}}</a></div>
+
                 	
   	<div class="cell small-3"  ><i class="fas fa-check" style="color:#F15A24; font-size:30px; margin-left: 50px;"></i></div>
 	<div class="werk-line"></div>
-	</div>
 
     {% endfor %}
 </div>
     
-
+	<div class="grid-x" style=" margin-left: 150px;">
+	<div class="cell small-10" style ="">
+		<a href="{{ path('nieuweVacature'  )}}">
+			<i class="fas fa-arrow-right vac-arrow" style ="padding-bottom: 50px;" ></i><button type="submit"  class="btn knop" style="margin-top: 10px;">NIEUWE VACATURE MAKEN</button>
+		</a>
+	</div>
+	</div>
 
 {% endblock %}

@@ -5,20 +5,22 @@
 {% block body %}
 
 
-<div class="grid-x">
+	<div class="grid-x" style="position: absolute">
 
 	<div class="cell small-4  plaatjeVac" >
 	<div class="hexagonVac"></div>
 				<img src="{{asset(vacature.systeem.plaatje)}}" class="imageHexVac">
 	</div>
+	</div>
 
-	<div class="cell small-8 " style="margin-top: 80px; margin-left: 20px;">
+<div class="grid-x">
+	<div class="cell small-8 " style="margin-top: 80px; margin-left: 225px;;">
 		<div class="vac-date">{{vacature.datum.format('d/m/Y')}}</div>
 		<div class="vac-titel">{{vacature.titel}}</div>
 	</div>
 </div>
 
-<div class ="grid-x" style="margin-top: -100px;">
+<div class ="grid-x" style="">
 	
 	<div class="cell small-3 " style="margin-left: 225px">
 		<div class="vac-niv">NIVEAU:</div>		

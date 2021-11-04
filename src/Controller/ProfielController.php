@@ -29,7 +29,6 @@ class ProfielController extends BaseController
         $user = $this->use->getOneUser($id);
         
             return($this->render('profiel/index.html.twig',  ['user' => $user]));
-            var_dump($user);
     }   
 
     /**
@@ -40,30 +39,15 @@ class ProfielController extends BaseController
     {
         $params = $request->request->all();
 
-        $user = $this->getUser();
-        $user_id = $user->getId();
-        $profiel = $this->use->aanpassenUser($params);
+        $id = $this->getUser()->getId();
 
+
+        $rep = $this->getDoctrine()->getRepository(User::class);
+        $users = $rep->aanpassenUser($params, $id);
         
-        return $this->redirectToRoute('profiel', ['id' => $user_id]);
+        return $this->redirectToRoute('profiel', ['id' => $id]);
     }   
 
-    /**
-     * @Route("/saveProfiel", name="saveProfiel")
-     */
-    public function saveProfiel(Request $request)
-    {
-
-        $user = $this->getUser();
-        $user_id = $user->getId();
-
-        if(!$profiel){
-            return $this->redirectToRoute('profiel', ['id' => $user_id]);
-        }
-        $this->addFlash('notice', $profiel);
-        return $this->redirectToRoute('updateProfiel', ['id' => $user_id]);
-  
-    }
 
     /**
      * @Route("/sollicitaties/{id}", name="sollicitaties")

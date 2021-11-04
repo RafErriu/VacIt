@@ -1,57 +1,44 @@
-  {% extends 'base.html.twig' %}
+{% extends 'base.html.twig' %}
 
-{% block title %}Hello ProfielController!
-{% endblock %}
+{% block title %}Hello WerkgeverController!{% endblock %}
 
 {% block body %}
-	<style>
 
-	</style>
-
-
-<div class="grid-x" style="margin-left: 243px;">
-	<div class="cell small-6 " style="margin-top: 130px; ">
-		<div class="mijnprofiel">MIJN PROFIEL</div>
-	</div>
+<div class="grid-x">
+    <div class="cell small-8" style=" margin-top: 100px; margin-left: 150px;">
+            <h2 class="mijn-sol">NIEUWE VACATURE</h2>
+    </div>
 </div>
 
 <div class="grid-x" style="margin-left: 243px; padding-bottom: 20px;">
 		<div class="cell small-6 " style="">
-			<form role="form" action="{{ path('updateProfiel', {id: user.id}) }}" method="POST">
+			<form role="form" action="" method="POST">
 				
 				<div class="form-group">
-					<label for="voornaam">
-						<p class="">bedrijfsnaam</p>
+					<label for="titel">
+						<p class="">vacature titel</p>
 					</label>
-					<input type="text"  id="voornaam" value="{{user.voornaam}}" class="line3">
+					<input type="titel" name="titel"  id="titel"  class="line3">
 				</div>
 		</div>
-
 			
 	</div>
 
-    <div class="grid-x" style="margin-left: 243px; padding-bottom: 20px;">
-            	<div class="cell small-11 form-group">
-					<label for="email">
-						<p class="">email</p>
-					</label>
-					<input type="email"  name="email" id="email" value="{{user.email}}" class="line3">
-				</div>
-	</div>
+
 
        <div class="grid-x" style="margin-left: 243px; padding-bottom: 20px;">
             	<div class="cell small-3 form-group">
-					<label for="geboortedatum">
-						<p class="">datum van oprichting</p>
+					<label for="datum">
+						<p class="">start datum</p>
 					</label>
-					<input type="geboortedatum" name="geboortedatum" id="geboortedatum" value="{{user.geboortedatum}}" class="line2">
+					<input type="datum" name="datum" id="datum" class="line2">
 				</div>
 
             	<div class="cell small-8 form-group">
-					<label for="telefoonnummer">
-						<p class="">telefoonnummer</p>
+					<label for="niveau">
+						<p class="">niveau</p>
 					</label>
-					<input type="telefoonnummer" name="telefoonnummer" id="telefoonnummer" value="{{user.telefoonnummer}}" class="line">
+					<input type="niveau" name="niveau" id="niveau"class="line">
 				</div>
 			</div>
 	    
@@ -61,7 +48,7 @@
 					<label for="adres">
 						<p class="">adres</p>
 					</label>
-					<input type="adres" id="adres" name="adres" value="{{user.adres}}" class="line3">
+					<input type="adres" id="adres" name="adres"class="line3">
 				</div>
 		</div>
 
@@ -71,14 +58,14 @@
 					<label for="postcode">
 						<p class="">postcode</p>
 					</label>
-					<input type="postcode" id="postcode" name="postcode" value="{{user.postcode}}" class="line2">
+					<input type="postcode" id="postcode" name="postcode"class="line2">
 				</div>
 
             	<div class="cell small-8 form-group" style="">
 					<label for="woonplaats">
 						<p class="">vestigingsplaats</p>
 					</label>
-					<input type="woonplaats" id="woonplaats" name="woonplaats" value="{{user.Woonplaats}}" class="line">
+					<input type="woonplaats" id="woonplaats" name="woonplaats"  class="line">
 				</div>
 		</div>
 
@@ -86,8 +73,12 @@
 		<div class="cell small-8 " style="margin-left: 240px; color: grey; font-size: 20px;  font-style: italic;">
 			</div>
 		</div class="cell small-4">
+		<a href="{{ path('vacatureOpslaan'  )}}">
                 <i class="fas fa-arrow-right vac-arrow" style ="padding-bottom: 50px; margin-left: 600px;" ></i><button type="submit" id="submit" class="btn knop" style="margin-top: 10px;">OPSLAAN</button>
+		</a>
 		</div>
 			</form>
 		</div>
+
+
 {% endblock %}

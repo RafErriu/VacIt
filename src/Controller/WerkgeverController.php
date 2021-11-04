@@ -40,4 +40,28 @@ class WerkgeverController extends BaseController
 
         return $this->render('werkgever/profielWG.html.twig', ['user' => $user]);
     }
+
+    /**
+     * @Route("/nieuweVacature", name= "nieuweVacature")]
+     * @Template()
+     */
+    public function nieuweVacature()
+    {
+
+        return $this->render('werkgever/nieuweVac.html.twig');
+    }
+
+        /**
+     * @Route("/vacatureOpslaan", name= "vacatureOpslaan")]
+     * @Template()
+     */
+    public function vacatureOpslaan()
+    {
+
+        $vacature = $this->vac->nieuweVacature($vacatures);
+
+        return $this->render('werkgever/nieuweVac.html.twig');
+    }
+
+
 }
