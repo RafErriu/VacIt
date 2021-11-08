@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello WerkgeverController!{% endblock %}
+{% block title %}Vacature Maken{% endblock %}
 
 {% block body %}
 
@@ -11,71 +11,58 @@
 </div>
 
 <div class="grid-x" style="margin-left: 243px; padding-bottom: 20px;">
-		<div class="cell small-6 " style="">
-			<form role="form" action="" method="POST">
-				
+		<div class="cell small-3 " style="margin-top:11px;">
+			<form role="form" action="{{ path('vacatureOpslaan')  }}" method="POST">
+				     <input id="werkgever_id" name="werkgever_id" type="hidden" value="{{ app.user.id }}" class="form-control">    
+
 				<div class="form-group">
-					<label for="titel">
-						<p class="">vacature titel</p>
+					<label for="systeem">
+						<p class="">systeem</p>
 					</label>
-					<input type="titel" name="titel"  id="titel"  class="line3">
-				</div>
+					<select  type="systeem" name="systeem" id="systeem" class="line2">
+							{% for systeem in system %}
+  						  <option  value="{{ systeem.id }}">{{systeem.naam}}</option>					  
+						   	{% endfor %}
+					</select>
+			    </div>
+
 		</div>
-			
-	</div>
-
-
-
-       <div class="grid-x" style="margin-left: 243px; padding-bottom: 20px;">
-            	<div class="cell small-3 form-group">
-					<label for="datum">
-						<p class="">start datum</p>
-					</label>
-					<input type="datum" name="datum" id="datum" class="line2">
-				</div>
-
-            	<div class="cell small-8 form-group">
+        	<div class="cell small-8 form-group"  >
 					<label for="niveau">
 						<p class="">niveau</p>
 					</label>
 					<input type="niveau" name="niveau" id="niveau"class="line">
 				</div>
 			</div>
-	    
-		<div class="grid-x" style="margin-left: 243px; padding-bottom: 20px;">
+       <div class="grid-x" style="margin-left: 243px; padding-bottom: 20px;">
 
-            	<div class="cell small-11 form-group" style= "">
-					<label for="adres">
-						<p class="">adres</p>
+				<div class="cell small-11 form-group">
+					<label for="titel">
+						<p class="">titel</p>
 					</label>
-					<input type="adres" id="adres" name="adres"class="line3">
+					<input type="" name="titel" id="titel"class="line3">
 				</div>
-		</div>
+			</div>
+			
+	</div>
+
 
 		<div class="grid-x" style="margin-left: 243px; margin-bottom: -80px;" >
 
-            	<div class="cell small-3 form-group">
-					<label for="postcode">
-						<p class="">postcode</p>
+            	<div class="cell small-11 form-group" style="padding-bottom: 50px;">
+					<label for="omschrijving">
+						<p class="">omschrijving</p>
 					</label>
-					<input type="postcode" id="postcode" name="postcode"class="line2">
-				</div>
-
-            	<div class="cell small-8 form-group" style="">
-					<label for="woonplaats">
-						<p class="">vestigingsplaats</p>
-					</label>
-					<input type="woonplaats" id="woonplaats" name="woonplaats"  class="line">
+					<textarea type="omschrijving" id="omschrijving" name="omschrijving"class="line4"></textarea>
 				</div>
 		</div>
+
 
 <div class="grid-x" style="padding-bottom: 100px;">
 		<div class="cell small-8 " style="margin-left: 240px; color: grey; font-size: 20px;  font-style: italic;">
 			</div>
 		</div class="cell small-4">
-		<a href="{{ path('vacatureOpslaan'  )}}">
                 <i class="fas fa-arrow-right vac-arrow" style ="padding-bottom: 50px; margin-left: 600px;" ></i><button type="submit" id="submit" class="btn knop" style="margin-top: 10px;">OPSLAAN</button>
-		</a>
 		</div>
 			</form>
 		</div>

@@ -30,6 +30,17 @@ class ProfielController extends BaseController
         
             return($this->render('profiel/index.html.twig',  ['user' => $user]));
     }   
+    
+        /**
+         * @Route("/showProfiel/{id}", name= "showProfiel")
+         * @Template()
+         */
+    public function showProfiel($id) {
+        $id = $this->getUser()->getId();
+        $user = $this->use->getOneUser($id);
+        
+            return($this->render('profiel/index.html.twig',  ['user' => $user]));
+    }
 
     /**
      * @Route("/updateProfiel/{id}", name= "updateProfiel")
@@ -40,12 +51,19 @@ class ProfielController extends BaseController
         $params = $request->request->all();
 
         $id = $this->getUser()->getId();
+        $user = $this->use->getOneUser($id);
 
+        $record_type = $this->getUser()->getRecordType();
+        $record = $this->use->getTheRecordType($record_type);
 
-        $rep = $this->getDoctrine()->getRepository(User::class);
-        $users = $rep->aanpassenUser($params, $id);
-        
-        return $this->redirectToRoute('profiel', ['id' => $id]);
+        $users = $this->use->aanpassenUser($params, $id);
+
+        if($record_type == "N"){
+            return($this->render('profiel/index.html.twig',  ['user' => $user]));
+        }
+        else {
+            return $this->render('werkgever/profielWG.html.twig', ['user' => $user]);
+        }
     }   
 
 
@@ -79,6 +97,25 @@ class ProfielController extends BaseController
 
         return ($this->redirectToRoute('sollicitaties', ['id' => $user_id]));
     }
+
+     /**
+     * @Route("/removeSollicitatie/{id}", name="removeSollicitatie")
+     * @Template()
+     */
+    public function removeSollicitatie($id)
+    {
+        $sollicitatie = $this->sol->verwijderSollicitatie($id);
+        $user = $this->getUser();
+        $user_id = $user->getId();   
+
+        $sollicitaties = $this->sol->getSollicitaties($id);
+
+
+        return ($this->redirectToRoute('sollicitaties',  ['id' => $user_id]));
+    }
+
+
+
 
 
 }   

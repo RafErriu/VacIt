@@ -32,6 +32,11 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         return($user);
     }
 
+    public function getTheRecordType($record_type) {
+        $record = $this->find($record_type);
+        return($record);
+    }
+
     public function aanpassenUser($params, $id){
 
         $user = $this->find($id);

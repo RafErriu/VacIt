@@ -30,6 +30,9 @@
   	<div class="cell small-3"  ><i class="fas fa-check" style="color:#F15A24; font-size:30px; margin-left: 50px;"></i></div>
 	  {% endif %}
 	<div class="werk-line"></div>
+	<a style="color:#F15A24;" href="{{ path('removeSollicitatie' , { 'id' : sollicitatie.id }) }}">
+	<i class="fas fa-trash del-sol"></i>
+	</a>
 	{% endfor %}
 	</div>
 </div>

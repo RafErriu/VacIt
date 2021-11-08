@@ -95,6 +95,8 @@ body a {
     margin-top: -165px;
     z-index: 15;
     position: relative;
+    -webkit-filter: grayscale(100%); 
+  filter: grayscale(100%);
 }
 
 .info {
@@ -155,6 +157,15 @@ input.line2{
     font-weight: 500;
 }
 
+select.line2{
+    border:none; 
+    box-shadow: none; 
+    border-bottom: 3px solid #F15A24;
+    width: 90%;
+    font-family: Roboto Condensed;
+    font-weight: 500;
+}
+
 input.line3{
     border:none; 
     box-shadow: none; 
@@ -163,6 +174,16 @@ input.line3{
     font-family: Roboto Condensed;
     font-size: 40px;
     font-weight: 500;
+}
+
+textarea.line4{
+    border:none; 
+    box-shadow: none; 
+    border-bottom: 3px solid #F15A24;
+    width: 93%;
+    font-family: Roboto Condensed;
+    font-weight: 500;
+    height: 400px;
 }
 
 
@@ -237,10 +258,12 @@ margin-left: 150px;
 
 .imageHexVac {
 width: 85px;
-margin-left: 195px;
-margin-top: -170px;
+margin-left: 198px;
+margin-top: -165px;
 z-index: 15;
 position: relative;
+-webkit-filter: grayscale(100%); 
+filter: grayscale(100%);
 }
 
 .vac-date {
@@ -290,6 +313,10 @@ position: relative;
     font-family: arial;
     font-weight: 400;
 }
+.home-arrow{
+    color: white;
+    font-size: 90px;
+}
 
 .vac-arrow {
     color: #F15A24;
@@ -300,6 +327,14 @@ position: relative;
     font-size: 50px;
     font-weight: 500;
     color: #F15A24;
+    font-family: Bebas Neue;
+    margin-bottom: 45px;
+}
+
+.home-knop {
+    font-size: 70px;
+    font-weight: 500;
+    color: white;
     font-family: Bebas Neue;
     margin-bottom: 45px;
 }
@@ -334,9 +369,18 @@ display:inline;
         border:none; 
         box-shadow: none; 
         border-bottom: 3px solid grey;
-        width: 90%;
+        width: 85%;
         margin-bottom: 30px;
     }
+
+.del-sol {
+    font-size: 35px;
+    color: #F15A24;
+    margin-left: 30px;
+    margin-top: -20px;
+    position: absolute;
+
+}
 
 .mijn-sol {
     color: #F15A24; 

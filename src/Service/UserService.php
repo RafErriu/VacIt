@@ -17,6 +17,17 @@ class UserService {
         return($user);
     }
 
+    public function getTheRecordType($record_type) {
+        $record = $this->rep->getTheRecordType($record_type);
+        return($record);
+    }
+
+    public function aanpassenUser($params, $id){
+        $user=$this->rep->aanpassenUser($params, $id);
+        return($user);
+    }
+
+
     /*
     public function aanpassenUser($params, $id){
         $user=$this->rep->aanpassenUser($params);

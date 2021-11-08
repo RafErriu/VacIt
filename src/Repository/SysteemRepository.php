@@ -19,6 +19,16 @@ class SysteemRepository extends ServiceEntityRepository
         parent::__construct($registry, Systeem::class);
     }
 
+    public function getAllSysteem() {
+        $systeem = $this->findAll();
+        return($systeem);
+    }
+
+    public function getSysteem($id) {
+        $systeem = $this->find($id);
+        return($systeem);
+    }
+
     // /**
     //  * @return Systeem[] Returns an array of Systeem objects
     //  */

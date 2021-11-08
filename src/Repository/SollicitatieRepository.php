@@ -55,11 +55,24 @@ class SollicitatieRepository extends ServiceEntityRepository
         return($sollicitatie);
     }
 
-    public function getSolliVacci($werkgever) {
-        $users = $em->getRepository(Vacature::class);
+    public function getSolliVacci($vac) {
 
-        $sollicitaties = $this->findBy(array("werkgever" => $user));
+        $sollicitaties = $this->findBy(array("vacature" => $vac));
         return ($sollicitaties);
+    }
+
+    public function verwijderSollicitatie($id) {
+
+
+        $sollicitatie = $this->find($id);
+
+        $em = $this->getEntityManager();
+
+
+        $em->remove($sollicitatie);
+        $em->flush();
+
+        return("Succes");
     }
 
 

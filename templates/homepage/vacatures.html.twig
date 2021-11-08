@@ -24,8 +24,8 @@ $("#example, body").vegas({
 
 </div>
 
-<div class="grid-x main" style="">
-	{% for vacature in vacatures|slice(0, 5) %}
+<div class="grid-x main" style="padding-bottom: 50px;">
+	{% for vacature in vacatures %}
 			<div class="cell small-4 plaatje ">
 				<div class="hexagon"></div>
 				<img src="{{asset(vacature.systeem.plaatje)}}" class="imageHex">
@@ -42,14 +42,6 @@ $("#example, body").vegas({
 		{% endfor %}
 </div>
 
-<div class="grid-x main">
-	<div class="cell small-6" style="color: white; margin-left: 450px; z-index: 30;">
-		<a href="{{ path("vacatures") }}">
-			<i class="fas fa-arrow-right home-arrow"></i>
-			<button type="submit" class="btn home-knop">ALLE VACATURES</button>
-		</a>
-	</div>
-</div>
 
 
 

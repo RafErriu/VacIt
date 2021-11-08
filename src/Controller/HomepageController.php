@@ -8,6 +8,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use App\Entity\Vacature;
 use App\Entity\Systeem;
+use App\Entity\Sollicitatie;
+
 
 /**
  * @Route("/")
@@ -37,8 +39,26 @@ class HomepageController extends BaseController
         $werkgever_id = $vacature->getWerkgever()->getId();
         $vacatures = $this->vac->bedrijfVacatures($werkgever_id);
 
-        return($this->render('homepage/vacature.html.twig', ['vacature' => $vacature, 'vacatures' => $vacatures]));
+
+
+        $sollicitaties = $this->sol->getSolliVacci($vacature);
+        
+
+        return($this->render('homepage/vacature.html.twig', ['vacature' => $vacature, 'vacatures' => $vacatures, 'sollicitaties' => $sollicitaties]));
 }
+
+    /**
+     * @Route("/vacatures", name= "vacatures")
+     * @Template()
+     */
+    public function vacatures()
+    {
+     
+            $user = $this->getUser();
+            $vacatures = $this->vac->getAllVacatures();
+            
+            return ($this->render('homepage/vacatures.html.twig', ['vacatures' => $vacatures, 'user' => $user]));
+    }
     
      /**
      * @Route("/", name= "homepage")

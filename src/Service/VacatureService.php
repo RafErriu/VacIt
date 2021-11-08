@@ -7,6 +7,8 @@ use Doctrine\ORM\EntityManagerInterface;
 
 class VacatureService {
 
+    private $sys;
+
     public function __construct(EntityManagerInterface $em)
     {
         $this->rep=$em->getRepository(Vacature::class);
@@ -34,12 +36,12 @@ class VacatureService {
         return($vacatures);
     }
 
-    public function nieuweVacature($vacatures) {
-        $vacature= $this->rep ->nieuweVacature($vacatures);
-            return($vacature);
+    public function nieuweVac($vacatures) {
         
+    $vacature= $this->rep ->nieuweVac($vacatures);
+    return($vacature);
+
     }
     
-
-
+ 
 }

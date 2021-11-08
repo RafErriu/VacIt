@@ -2,6 +2,8 @@
 
 namespace App\Repository;
 
+use App\Entity\Systeem;
+use App\Entity\User;
 use App\Entity\Vacature;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -41,22 +43,32 @@ class VacatureRepository extends ServiceEntityRepository
         return ($vacatures);
     }
 
-    public function nieuweVacature($vacatures){
+    public function nieuweVac($params){
+
+
         $vacature = new Vacature();
-        $vacature->setTitel($vacatures["titel"]);
-        $vacature->setDatum(new \DateTime);
-        $vacature->setNiveau($vacatures["niveau"]);
-        $vacature->setOmschrijving($vacatures["omschrijving"]) ;
-        $vacature->setSysteem($vacatures["systeem_id"]);
-        $vacature->setWerkgever($vacatures["werkgever_id"]);
 
         $em = $this->getEntityManager();
+
+        $systeemRep = $em->getRepository(Systeem::class);
+        $werkgeverRep = $em -> getRepository(User::class);
+
+
+        $werkgever = $werkgeverRep->find($params["werkgever_id"]);
+        $systeem = $systeemRep->find($params["systeem"]);
+
+        $vacature->setSysteem($systeem);
+        $vacature->setWerkgever($werkgever);
+        $vacature->setTitel($params["titel"]);
+        $vacature->setDatum(new \DateTime);
+        $vacature->setNiveau($params["niveau"]);
+        $vacature->setOmschrijving($params["omschrijving"]) ;
+
+        $em->persist($vacature);
         $em->flush();
            
         
-        return ($vacatures);
-        echo "Vacature toegevoegd!";
-
+        return ($vacature);
     }
 
     // /**
