@@ -157,11 +157,19 @@ input.line2{
     font-weight: 500;
 }
 
+textarea.motivatie {
+    color: grey;
+     font-size: 20px;
+       font-style: italic;
+       width: 90%;
+}
+
 select.line2{
     border:none; 
     box-shadow: none; 
     border-bottom: 3px solid #F15A24;
-    width: 90%;
+    width: 100%;
+    height: 1000px;
     font-family: Roboto Condensed;
     font-weight: 500;
 }
@@ -363,6 +371,8 @@ display:inline;
     font-size: 23px;
     margin-top: -60px;
     font-weight: 500;
+    color: #F15A24;
+    
 }
 
 .werk-line {

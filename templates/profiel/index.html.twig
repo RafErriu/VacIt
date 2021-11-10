@@ -39,7 +39,7 @@
 					<label for="voornaam">
 						<p class="">Voornaam</p>
 					</label>
-					<input type="text"  id="voornaam" value="{{user.voornaam}}" class="line2">
+					<input type="text"  id="voornaam"  name="voornaam" value="{{user.voornaam}}" class="line2">
 				</div>
 		</div>
 
@@ -47,7 +47,7 @@
 					<label for="achternaam">
 						<p >Achternaam</p>
 					</label>
-					<input type="text"  id="achternaam" value="{{user.achternaam}}" class="line">
+					<input type="text"  id="achternaam"  name="achternaam" value="{{user.achternaam}}" class="line">
 				</div>
 	</div>
 
@@ -106,21 +106,79 @@
 		
 		<div class="grid-x">
 			<div class="cell small-8 " style="margin-top: 130px; margin-left: 240px; ">
+				<label for="motivatie">
 				<div class="mijnprofiel">MOTIVATIE</div>
+				</label>
+				<textarea type="motivatie" id="motivatie" name="motivatie" value="{{user.motivatie}}" class="motivatie" style="height: 400px;">{{user.motivatie}}</textarea>
 			</div>
 		</div>
 
-			<div class="grid-x">
-				<div class="cell small-8 " style="margin-left: 240px; color: grey; font-size: 20px;  font-style: italic;">
-				{{user.motivatie}}
-			</div>
-		</div>
+	
 
-			<div class="grid-x" style="">
-			
+		<div class="grid-x" style ="padding-top: 30px;">
+		    <div class="cell small-8 form-group" style="margin-left: 240px;">
+			<label for="cv">
+		<h1 class="mijnprofiel" style="display: inline-block; position: relative; margin-right: 30px;">UPLOAD CV</h1>   <i class="fas fa-arrow-right vac-arrow" style =" " ></i><button type="submit" id="submit" class="btn knop">
+		</label>
+			<input type="cv" id="cv" name="cv" value="{{user.cv}}" style="font-family: Roboto Condensed; width: 500px; font-size: 40px; margin-bottom: 15px;">
+			   <script>
+ $(document).ready(function() {
+
+            let uploader = new ss.SimpleUpload({
+                button: "upload",
+                url: "{{ path('upload_file') }}",
+                name: 'file', // upload parameter name die gebruikt wordt in de controller
+                responseType: 'json',
+                allowedExtensions: ['png', 'jpg', 'jpeg', 'pdf'],
+                hoverClass: 'hover-class-upload',
+                focusClass: 'hover-class-upload',
+                multiple: false,
+                disabledClass: 'ui-state-disabled',
+                autoSubmit: true,
+
+                onSizeError: function() {
+                    alert('File may not exceed 100MB');
+                },
+
+                onExtError: function() {
+                    alert('Invalid file type. Please use a PNG, JPG or JPEG or PDF file');
+                },
+
+                onSubmit: function( filename, extension, uploadBtn, fileSize ) {
+                    /// Bijvoorbeeld een overlay of een spinner starten...
+                    return(true);
+                },
+
+                onComplete: function (filename, response) {
+
+                    if(response.success === false) {
+                        alert(response.errors);
+                    } else {
+						$('#cv').val(response.file_id);
+
+                        /// Doe iets met response.file_id (path naar de geuploade file)
+                
+                    }
+                }
+            });
+        });
+    </script>
+</head>     
+<body>
+    <div class="cell small-1" id="upload" style=" display: inline; font-size:80px; margin-top: -15px ; position: absolute;">
+			<i class="far fa-file-pdf"></i>    
+	</div>
+</body>
+</div>
+</div>
+
+
+	<div class="grid-x" style ="">
 		</div class="cell small-8" style="">
-                <i class="fas fa-arrow-right vac-arrow" style ="padding-bottom: 50px; margin-left: 240px;" ></i><button type="submit" id="submit" class="btn knop" style="margin-top: 10px;">OPSLAAN</button>
+                <i class="fas fa-arrow-right vac-arrow" style ="padding-bottom: 50px; margin-left: 240px; " ></i><button type="submit" id="submit" class="btn knop" style="margin-top: 10px;">OPSLAAN</button>
 		</div>
+	</div>
 	</form>
+	
 
 {% endblock %}

@@ -47,6 +47,9 @@ security:
          - { path: ^/admin, roles: ROLE_ADMIN }
          - { path: ^/profiel, roles: [ ROLE_WERKNEMER, ROLE_WERKGEVER]  }
          - { path: ^/werkgever, roles: ROLE_WERKGEVER }
+         - { path: ^/profiel/sollicitaties, roles: ROLE_WERKNEMER }
+
+         
 
 
      

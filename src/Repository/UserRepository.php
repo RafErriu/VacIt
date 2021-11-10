@@ -75,6 +75,14 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         {
         $user->setWoonplaats($params['woonplaats']);
         }
+        if(isset($params["cv"]))
+        {
+        $user->setCv($params['cv']);
+        }
+        if(isset($params["motivatie"]))
+        {
+        $user->setMotivatie($params['motivatie']);
+        }
 
         $em->persist($user);
         $em->flush();

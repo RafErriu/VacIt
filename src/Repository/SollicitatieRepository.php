@@ -75,6 +75,20 @@ class SollicitatieRepository extends ServiceEntityRepository
         return("Succes");
     }
 
+    public function uitnodigen($id) {
+        $em = $this->getEntityManager();
+        $user = $this->find($id);
+
+        if(isset($params["uitgenodigd"]))
+        {
+            $user->setUitgenodigd("Y");
+        }
+        $em->persist($user);
+        $em->flush();
+
+        return($user);
+
+    }
 
 
     

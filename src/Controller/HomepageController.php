@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use App\Entity\Vacature;
 use App\Entity\Systeem;
 use App\Entity\Sollicitatie;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 
 /**
@@ -46,6 +47,18 @@ class HomepageController extends BaseController
 
         return($this->render('homepage/vacature.html.twig', ['vacature' => $vacature, 'vacatures' => $vacatures, 'sollicitaties' => $sollicitaties]));
 }
+
+     /**
+     * @Route("/uitnodigen", name= "uitnodigen")
+     * @Template()
+     */
+    public function uitnodiging($id) {
+
+        
+        $user = $this->sol->uitnodigen($id);
+
+        return $this->redirectToRoute('homepage');
+    }
 
     /**
      * @Route("/vacatures", name= "vacatures")

@@ -39,6 +39,7 @@
 	</div>
 </div>
 
+	{% if is_granted('ROLE_WERKNEMER') %}
 <div class="grid-x ">
 	<div class="cell small-6" style="color: #F15A24; margin-left: 150px;">
 		<a href="{{ path('opslaanSollicitatie' , { 'id' : vacature.id } ) }}">
@@ -47,8 +48,9 @@
 		</a>
 	</div>
 </div>
+{% endif %}
 
-<div class="grid-x " style="margin-left:230px; margin-top: -25px;">
+<div class="grid-x " style="margin-left:230px; margin-top: -25px; padding-top: 30px;">
 	<div class="cell small-6" style ="font-family: Bebas Neue; font-size: 35px;  font-weight: 500;">
 		<div class="vac-meer">MEER VACATURES VAN</div><div class="vac-werkgever">{{vacature.werkgever.voornaam}}</div>
 	</div>
@@ -91,12 +93,13 @@
 <div class="grid-x werk-gegevens" style="padding-bottom: 100px;">
 	
 	{% for sollicitatie in sollicitaties %}
-	<a href="{{ path('showProfiel' , { 'id' : sollicitatie.werknemer.id}) }}">
-	<div class="cell small-8" style ="color:#F15A24;">{{sollicitatie.werknemer.voornaam}} {{sollicitatie.werknemer.achternaam}}</div>
-	</a>
-	<div class="werk-line"></div>
+		<a style=" color: #F15A24;"class="cell small-2"href="{{ path('showProfiel' , { 'id' : sollicitatie.werknemer.id}) }}">{{sollicitatie.werknemer.voornaam}} {{sollicitatie.werknemer.achternaam}}</a>
+		<a style=" color: #F15A24;"class="cell small-2"href="{{ path('uitnodigen'  , { 'id' : sollicitatie.werknemer.id}) }}">{{sollicitatie.uitgenodigd}} </a>
+
+					<div class="werk-line"></div>
+
 	{% endfor %}
-	</div>
+
 </div>
 
 

@@ -34,4 +34,9 @@ class SollicitatieService {
         return($sollicitatie);
     }
 
+    public function uitnodigen() {
+        $user=$this->rep->uitnodigen();
+        return($user);
+    }
+
 }
