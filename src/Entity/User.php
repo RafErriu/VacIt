@@ -100,6 +100,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $vacatures;
 
+    /**
+     * @ORM\Column(type="string", length=1000, nullable=true)
+     */
+    private $foto;
+
     public function __construct()
     {
         $this->sollicitaties = new ArrayCollection();
@@ -371,6 +376,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $vacature->setWerkgever(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getFoto(): ?string
+    {
+        return $this->foto;
+    }
+
+    public function setFoto(?string $foto): self
+    {
+        $this->foto = $foto;
 
         return $this;
     }

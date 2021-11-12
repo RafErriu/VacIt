@@ -42,6 +42,16 @@ class ProfielController extends BaseController
             return($this->render('profiel/index.html.twig',  ['user' => $user]));
     }
 
+            /**
+         * @Route("/showSollicitant/{id}", name= "showSollicitant")
+         * @Template()
+         */
+        public function showSollicitant($id) {
+            $user = $this->use->getOneUser($id);
+            
+                return($this->render('profiel/sollicitant.html.twig',  ['user' => $user]));
+        }
+
     /**
      * @Route("/updateProfiel/{id}", name= "updateProfiel")
      * @Template()

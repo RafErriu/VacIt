@@ -249,9 +249,9 @@ textarea.line4{
 }
 
 .plaatjeVac {
-    color: white;
-margin-left: -125px;
-margin-top: 120px;
+ color: white;
+margin-left: -145px;
+margin-top: 250px;
 display:inline-block;
 }
 
@@ -262,7 +262,18 @@ height: 140px;
 width: 160px;
 z-index: 4;
 margin-left: 150px;
+overflow: hidden;
 }
+
+.fotoHexVac {
+    clip-path: polygon(0% 50%, 25% 100%, 75% 100%, 100% 50%, 75% 0%, 25% 0%);
+    height: 140px;
+width: 400px;
+    margin-left: 198px;
+    margin-top: -165px;
+    z-index: 15;
+  
+    }
 
 .imageHexVac {
 width: 85px;
@@ -273,6 +284,8 @@ position: relative;
 -webkit-filter: grayscale(100%); 
 filter: grayscale(100%);
 }
+
+
 
 .vac-date {
     font-size: 30px;

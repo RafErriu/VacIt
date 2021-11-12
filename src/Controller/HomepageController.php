@@ -10,6 +10,8 @@ use App\Entity\Vacature;
 use App\Entity\Systeem;
 use App\Entity\Sollicitatie;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
+
 
 
 /**
@@ -49,15 +51,16 @@ class HomepageController extends BaseController
 }
 
      /**
-     * @Route("/uitnodigen", name= "uitnodigen")
+     * @Route("/uitnodigen/{id}", name= "uitnodigen")
      * @Template()
      */
     public function uitnodiging($id) {
 
-        
-        $user = $this->sol->uitnodigen($id);
+        $us_id = $this->getUser()->getId();
 
-        return $this->redirectToRoute('homepage');
+        // $werkgever_id= $this->getUser()->getId();
+        $sollicitatie = $this->sol->uitnodigen($id);
+        return $this->redirectToRoute('werkgever', ['id' => $us_id]);
     }
 
     /**

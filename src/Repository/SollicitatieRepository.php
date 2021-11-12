@@ -21,6 +21,12 @@ class SollicitatieRepository extends ServiceEntityRepository
         parent::__construct($registry, Sollicitatie::class);
     }
 
+
+    public function getSollicitatie($id) {
+        $sollicitatie = $this->find($id);
+        return($sollicitatie);
+    }
+
     public function getSollicitaties($user) {
 
         $sollicitaties = $this->findBy(array("werknemer" => $user));
@@ -77,16 +83,24 @@ class SollicitatieRepository extends ServiceEntityRepository
 
     public function uitnodigen($id) {
         $em = $this->getEntityManager();
-        $user = $this->find($id);
 
-        if(isset($params["uitgenodigd"]))
-        {
-            $user->setUitgenodigd("Y");
+        $sollicitatie = $this->find($id);
+        $uitnodiging = $sollicitatie->getUitgenodigd();
+
+        if($uitnodiging == "Y") {
+            $sollicitatie->setUitgenodigd("N");
+        }    
+        else{
+            $sollicitatie->setUitgenodigd("Y");
         }
-        $em->persist($user);
+
+
+        
+        
+        $em->persist($sollicitatie);
         $em->flush();
 
-        return($user);
+        return($sollicitatie);
 
     }
 

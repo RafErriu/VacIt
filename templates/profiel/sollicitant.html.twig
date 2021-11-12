@@ -1,0 +1,125 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sollicitant
+{% endblock %}
+
+{% block body %}
+
+
+<div class="grid-x" style="position: absolute;">
+
+	<div class="cell small-4  plaatjeVac" >
+				<img src="{{user.foto}}" class="fotoHexVac">
+	</div>
+	</div>
+
+<div class="grid-x" style="margin-left: 243px;">
+	<div class="cell small-6 " style="margin-top: 130px; ">
+		<div class="mijnprofiel"> PROFIEL</div>
+	</div>
+</div>
+
+<div class="grid-x" style="margin-left: 243px; padding-bottom: 20px;">
+		<div class="cell small-3 " style="">
+			<form role="form" action="{{ path('updateProfiel', {id: user.id}) }}">
+				
+				<div class="form-group">
+					<label for="voornaam">
+						<p class="">Voornaam</p>
+					</label>
+					<input disabled type="text"  id="voornaam"  name="voornaam" value="{{user.voornaam}}" class="line2">
+				</div>
+		</div>
+
+				<div class="cell small-8 form-group" >
+					<label for="achternaam">
+						<p >Achternaam</p>
+					</label>
+					<input disabled type="text"  id="achternaam"  name="achternaam" value="{{user.achternaam}}" class="line">
+				</div>
+	</div>
+
+    <div class="grid-x" style="margin-left: 243px; padding-bottom: 20px;">
+            	<div class="cell small-11 form-group">
+					<label for="email">
+						<p class="">email</p>
+					</label>
+					<input disabled type="email"  name="email" id="email" value="{{user.email}}" class="line3">
+				</div>
+	</div>
+
+       <div class="grid-x" style="margin-left: 243px; padding-bottom: 20px;">
+            	<div class="cell small-3 form-group">
+					<label for="geboortedatum">
+						<p class="">geboortedatum</p>
+					</label>
+					<input  disabled type="geboortedatum" name="geboortedatum" id="geboortedatum" value="{{user.geboortedatum}}" class="line2">
+				</div>
+
+            	<div class="cell small-8 form-group">
+					<label for="telefoonnummer">
+						<p class="">telefoonnummer</p>
+					</label>
+					<input disabled type="telefoonnummer" name="telefoonnummer" id="telefoonnummer" value="{{user.telefoonnummer}}" class="line">
+				</div>
+			</div>
+	    
+		<div class="grid-x" style="margin-left: 243px; padding-bottom: 20px;">
+
+            	<div class="cell small-11 form-group" style= "">
+					<label for="adres">
+						<p class="">adres</p>
+					</label>
+					<input disabled type="adres" id="adres" name="adres" value="{{user.adres}}" class="line3">
+				</div>
+		</div>
+
+		<div class="grid-x" style="margin-left: 243px; margin-bottom: -80px;" >
+
+            	<div class="cell small-3 form-group">
+					<label for="postcode">
+						<p class="">Postcode</p>
+					</label>
+					<input disabled type="postcode" id="postcode" name="postcode" value="{{user.postcode}}" class="line2">
+				</div>
+
+            	<div class="cell small-8 form-group">
+					<label for="woonplaats">
+						<p class="">Woonplaats</p>
+					</label>
+					<input disabled type="woonplaats" id="woonplaats" name="woonplaats" value="{{user.Woonplaats}}" class="line">
+				</div>
+		</div>
+
+		
+		<div class="grid-x">
+			<div class="cell small-8 " style="margin-top: 130px; margin-left: 240px; ">
+				<label for="motivatie">
+				<div class="mijnprofiel">MOTIVATIE</div>
+				</label>
+				<textarea  disabled type="motivatie" id="motivatie" name="motivatie" value="{{user.motivatie}}" class="motivatie" style="height: 400px;">{{user.motivatie}}</textarea>
+			</div>
+		</div>
+
+	
+
+		<div class="grid-x" style ="padding-top: 30px;">
+		    <div class="cell small-8 form-group" style="margin-left: 240px;">
+			<label for="cv">
+		<h1 class="mijnprofiel" style="display: inline-block; position: relative; margin-right: 30px;"> CV</h1>   <i class="fas fa-arrow-right vac-arrow" style =" " ></i><button disabled type="submit" id="submit" class="btn knop">
+		</label>
+			<input disabled type="cv" id="cv" name="cv" value="{{user.cv}}" style="font-family: Roboto Condensed; width: 500px; font-size: 40px; margin-bottom: 15px;">
+		
+
+    <div class="cell small-1" style=" display: inline; font-size:80px; margin-top: -15px ; position: absolute;">
+			<i class="far fa-file-pdf"></i>    
+	</div>
+</body>
+</div>
+</div>
+
+
+	</form>
+	
+
+{% endblock %}

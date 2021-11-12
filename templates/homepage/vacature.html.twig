@@ -60,7 +60,7 @@
 	<div class="cell small-3" style ="">DATUM</div>
 	<div class="cell small-5">VACATURE</div>
 	<div class="cell small-3">NIVEAU</div>
-	</div>
+	
 </div>
 
 <div class="grid-x werk-gegevens" style="padding-bottom: 50px;">
@@ -93,10 +93,10 @@
 <div class="grid-x werk-gegevens" style="padding-bottom: 100px;">
 	
 	{% for sollicitatie in sollicitaties %}
-		<a style=" color: #F15A24;"class="cell small-2"href="{{ path('showProfiel' , { 'id' : sollicitatie.werknemer.id}) }}">{{sollicitatie.werknemer.voornaam}} {{sollicitatie.werknemer.achternaam}}</a>
-		<a style=" color: #F15A24;"class="cell small-2"href="{{ path('uitnodigen'  , { 'id' : sollicitatie.werknemer.id}) }}">{{sollicitatie.uitgenodigd}} </a>
+		<a style=" color: #F15A24; display: inline; "class="cell small-3"href="{{ path('showSollicitant' , { 'id' : sollicitatie.werknemer.id}) }}">{{sollicitatie.werknemer.voornaam}} {{sollicitatie.werknemer.achternaam}}</a>
+		<a style=" color: #F15A24; display: inline; margin-left: 60px "class="cell small-2"href="{{ path('uitnodigen'  , { 'id' : sollicitatie.id}) }}">{{sollicitatie.uitgenodigd}} </a>
 
-					<div class="werk-line"></div>
+		<div class="werk-line"></div>
 
 	{% endfor %}
 
