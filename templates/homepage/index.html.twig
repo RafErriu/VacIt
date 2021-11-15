@@ -6,57 +6,81 @@
 {% block body %}
 
 
-
+<body class="main">
 <script>
 
-    
+
 $(function() {
      $("#vacatureDraaimolen").vegas({
                 transition: 'slideRight2',
 			    transitionDuration: 500,
-			    overlay: false,
+                timer: false,
+			    cover:  false,
+				color: 'rgb(38, 36, 36)',
+
+
 
 
 
                 slides: [
 				{% for vacature in vacatures %}
-             		{ src: "{{ asset(vacature.systeem.plaatje) }}"},
-              		
+             		{ src: "{{ asset(vacature.systeem.plaatje) }}",
+					vacature: "{{vacature.niveau}} {{vacature.titel}}",
+					werkgever: "{{vacature.werkgever.voornaam}}, {{vacature.werkgever. woonplaats}}"
+				 },
                 {% endfor %}
                 ],
+				 walk: function(index, informatie) {
+                    $('#vacatureInfo').html(informatie.vacature);
+                    $('#werkgever').html(informatie.werkgever);
+                }
              
             });
         })
     </script>
 
-	    <div class="grid-x" style="background-color: #F15A24;">
-        	<div class="cell small-3"> 
-            	<div id="vacatureDraaimolen" style="height: 300px; width: 300px; margin-top: 50px;"></div>
+	    <div class="grid-x show-for-large" style="background-color: #F15A24;  position: relative; width: 500px;">
+        	<div class="cell small-5 " style=";"> 
+				<div style=""class="draaimolenHex"></div>
+            	<div id="vacatureDraaimolen" class="draaimolen"></div>
+				<div id="vacatureInfo" class="infoDraai" ></div>
+				<div id="werkgever" class="werkgeverDraai" ></div>
+
             </div>
         </div>
 
 
 
-<div class="grid-x main" style="">
+
+<div class="grid-x main" style="padding-top: 120px; margin-top: -400px;">
 	{% for vacature in vacatures|slice(0, 5) %}
-			<div class="cell small-4 plaatje ">
-				<div class="hexagon"></div>
+			<div class="large-3 small-0"></div>
+			<div class="cell large-1 small-3 plaatje " style="">
+				<div style=""class="hexagon"></div>
 				<img src="{{asset(vacature.systeem.plaatje)}}" class="imageHex">
 			</div>
 			
-			<div class="cell small-8 info" >
+			<div class="cell  large-6 small-7 info" >
 					<div style="font-weight: 600;">  {{vacature.datum.format('d/m/Y')}}</div>
 					<div style="font-family: Roboto Condensed; color: white; font-size: 32px">{{vacature.titel}}</div>
 					<div class="omschrijvingK">{{vacature.omschrijving}}</div>
-					<a href="{{ path('vacature' , { 'id' : vacature.id }) }}">
-					<i class="fas fa-arrow-right arrowK" style=""></i>
+			</div>
+
+			<div class="cell large-1 small-1" style="">
+						<a href="{{ path('vacature' , { 'id' : vacature.id }) }}">
+					<i class="fas fa-arrow-right arrowK show-for-large" style=" margin-top: 70px;"></i>
+					<i class="fas fa-arrow-right arrowKsmall show-for-small-only" style=""></i>
+					<i class="fas fa-arrow-right arrowKsmall show-for-medium-only" style=""></i>
+
 				</a>
 			</div>
 		{% endfor %}
 </div>
 
 <div class="grid-x main">
-	<div class="cell small-6" style="color: white; margin-left: 450px; z-index: 30;">
+	<div class="cell small-6 show-for-large" style="color: white; margin-left: 700px; z-index: 30;">
+
+
 		<a href="{{ path("vacatures") }}">
 			<i class="fas fa-arrow-right home-arrow"></i>
 			<button type="submit" class="btn home-knop">ALLE VACATURES</button>
@@ -65,6 +89,6 @@ $(function() {
 </div>
 
 
-
+</body>
 {% endblock %}
 
