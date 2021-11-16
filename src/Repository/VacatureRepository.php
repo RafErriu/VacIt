@@ -71,6 +71,19 @@ class VacatureRepository extends ServiceEntityRepository
         return ($vacature);
     }
 
+    public function verwijderVacature($id) {
+
+
+        $vacature = $this->find($id);
+
+        $em = $this->getEntityManager();
+
+        $em->remove($vacature);
+        $em->flush();
+
+        return("Succes");
+    }
+
     // /**
     //  * @return Vacature[] Returns an array of Vacature objects
     //  */

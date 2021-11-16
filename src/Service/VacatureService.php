@@ -40,7 +40,11 @@ class VacatureService {
         
     $vacature= $this->rep ->nieuweVac($vacatures);
     return($vacature);
+    }
 
+    public function verwijderVacature($id) {
+        $vacature=$this->rep->verwijderVacature($id);
+        return($sollicitatie);
     }
     
  

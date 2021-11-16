@@ -76,25 +76,20 @@ class HomepageController extends BaseController
             return ($this->render('homepage/vacatures.html.twig', ['vacatures' => $vacatures, 'user' => $user]));
     }
     
-     /**
-     * @Route("/", name= "homepage")
+    
+    /**
+     * @Route("/removeVacature/{id}", name= "removeVacature")
      * @Template()
      */
-    /*
-    public function vacatureMaken()
-    {
-        $vacatures = array(
-            "titel" => "Goede Baan",
-            "niveau" => "Medior",
-            "omschrijving" => "Goede baan, lekker werken",
-            "systeem_id" => 2,
-            "werkgever_id" => 12
-        );
-        $rep = $this->getDoctrine()->getRepository(Vacature::class);
-        $vac = $rep->nieuweVacature($vacatures);
+    public function removeVacature($id) {
+        $vacature = $this->vac->verwijderVacature($id);
+        $user = $this->getUser();
+        $user_id = $user->getId();   
 
-        return $this->render('homepage/index.html.twig');
-        dump($vacature);
+        $vacatures = $this->vac->getVacatureWG($id);
+
+
+        return ($this->redirectToRoute('werkgever',  ['vacatures' => $vacatures]));
     }
-    */
+     
 }

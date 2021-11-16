@@ -39,8 +39,8 @@ $(function() {
         })
     </script>
 
-	    <div class="grid-x show-for-large" style="background-color: #F15A24;  position: relative; width: 500px;">
-        	<div class="cell small-5 " style=";"> 
+	    <div class="grid-x show-for-large" style="background-color: #F15A24; position: absolute;   width: 500px;">
+        	<div class="cell large-5 " style=""> 
 				<div style=""class="draaimolenHex"></div>
             	<div id="vacatureDraaimolen" class="draaimolen"></div>
 				<div id="vacatureInfo" class="infoDraai" ></div>
@@ -52,9 +52,9 @@ $(function() {
 
 
 
-<div class="grid-x main" style="padding-top: 120px; margin-top: -400px;">
+<div class="grid-x main" style="padding-top: 120px; ">
 	{% for vacature in vacatures|slice(0, 5) %}
-			<div class="large-3 small-0"></div>
+			<div class="cell large-3 small-0"></div>
 			<div class="cell large-1 small-3 plaatje " style="">
 				<div style=""class="hexagon"></div>
 				<img src="{{asset(vacature.systeem.plaatje)}}" class="imageHex">

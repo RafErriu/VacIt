@@ -11,10 +11,8 @@
 </div>
 
 <div class="grid-x sollicitatie-info " style="">
-	<div class="cell small-2" style ="">DATUM</div>
+	<div class="cell small-4" style ="">DATUM</div>
 	<div class="cell small-4">VACATURE</div>
-    	<div class="cell small-3">SOLLICITANTEN</div>
-	<div class="cell small-3">CV</div>
 	</div>
 
 
@@ -22,13 +20,15 @@
 <div class="grid-x sollicitatie-gegevens" style="padding-bottom: 750px;">
 	{% for vacature in vacatures %}
 
-	<div class="cell small-2" style ="color:grey">{{vacature.datum.format('d/m/Y')}}</div>
-		    <div class="cell small-4"><a style="color:#F15A24; " href="{{ path('vacature' , { 'id' : vacature.id }) }}">
+	<div class="cell small-4" style ="color:grey">{{vacature.datum.format('d/m/Y')}}</div>
+		    <div class="cell small-6"><a style="color:#F15A24; " href="{{ path('vacature' , { 'id' : vacature.id }) }}">
 			{{vacature.titel}}</a></div>
 
                 	
-  	<div class="cell small-3"  ><i class="fas fa-check" style="color:#F15A24; font-size:30px; margin-left: 50px;"></i></div>
 	<div class="werk-line"></div>
+	<a style="color:#F15A24;" href="{{ path('removeVacature' , { 'id' : vacature.id }) }}">
+	<i class="fas fa-trash del-sol"></i>
+	</a>
 
     {% endfor %}
 </div>
