@@ -229,10 +229,10 @@ select.line2{
     border:none; 
     box-shadow: none; 
     border-bottom: 3px solid #F15A24;
-    width: 100%;
-    height: 1000px;
+    width: 90%;
     font-family: Roboto Condensed;
     font-weight: 500;
+    font-size: 30px;
 }
 
 input.line3{
@@ -320,10 +320,27 @@ textarea.line4{
     color: #F15A24;
 }
 
+.plaatjePro {
+    color: white;
+   margin-left: -145px;
+   margin-top: 250px;
+   display:inline-block;
+   }
+   
+   .fotoHexPro{
+    clip-path: polygon(0% 50%, 25% 100%, 75% 100%, 100% 50%, 75% 0%, 25% 0%);
+    height: 140px;
+width: 400px;
+    margin-left: 198px;
+    margin-top: -165px;
+    z-index: 15;
+  
+   }
+
 .plaatjeVac {
  color: white;
-margin-left: -115px;
-margin-top: 150px;
+margin-top: 140px;
+margin-left: -120px;
 display:inline-block;
 }
 
