@@ -6,6 +6,9 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+
 
 use PhpOffice\PhpSpreadsheet\Reader\Xlsx;
 use PhpOffice\PhpSpreadsheet\IOFactory;
@@ -13,7 +16,7 @@ use PhpOffice\PhpSpreadsheet\IOFactory;
 use App\Repository\UserRepository;
 
 
-class ImportSpreadsheetCommand extends Command
+class CreateUserCommand extends Command
 {
 
     protected static $defaultName = 'app:import-spreadsheet';
@@ -51,20 +54,20 @@ class ImportSpreadsheetCommand extends Command
             }
             $params = [
             'email' => $row['C'],
-            'roles' => $row['D'],
+            'roles' => ["ROLE_WERKGEVER"],
             'password' => $row['E'],
             'voornaam' => $row['F'],
             'achternaam' => $row['G'],
             'geboortedatum' => $row['H'],
             'telefoonnummer' => $row['I'],
             'adres' => $row['J'],
-            'postcode' => $row['K']
+            'postcode' => $row['K'],
+            'record_type' => $row['O']
             ];
+ 
+            $user = $this->user->aanpassenUser($params);
 
-
-            $output->writeln("");
-            $output->writeln("Nieuwe Werkgever:");
-            $output->writeln($params['naam']);
+            $output->writeln($params);
         }
 
     }

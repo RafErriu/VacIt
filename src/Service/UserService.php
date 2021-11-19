@@ -22,8 +22,8 @@ class UserService {
         return($record);
     }
 
-    public function aanpassenUser($params, $id){
-        $user=$this->rep->aanpassenUser($params, $id);
+    public function aanpassenUser($params){
+        $user=$this->rep->aanpassenUser($params);
         return($user);
     }
 

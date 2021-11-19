@@ -8,6 +8,8 @@ use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+
 
 /**
  * @method User|null find($id, $lockMode = null, $lockVersion = null)
@@ -17,10 +19,11 @@ use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
  */
 class UserRepository extends ServiceEntityRepository implements PasswordUpgraderInterface
 {
-    public function __construct(ManagerRegistry $registry)
+    public function __construct(ManagerRegistry $registry, UserPasswordHasherInterface $passwordHasher)
     {
     
         parent::__construct($registry, User::class);
+        $this->hasher = $passwordHasher;
     }
     public function getAllUsers() {
         $users = $this->findAll();
@@ -37,12 +40,21 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         return($record);
     }
 
-    public function aanpassenUser($params, $id){
+    public function aanpassenUser($params){
 
-        $user = $this->find($id);
             
         
         $em = $this->getEntityManager();
+        if(isset($params['id'])) {
+            $user = $this->find($params['id']);
+        }
+        else {
+            $user = new User();
+        }
+        if(isset($params["roles"]))
+        {
+            $user->setRoles($params["roles"]);
+        }
         if(isset($params["voornaam"]))
         {
             $user->setVoornaam($params["voornaam"]);
@@ -50,6 +62,14 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         if(isset($params["achternaam"]))
         {
             $user->setAchternaam($params["achternaam"]);
+        }
+        if(isset($params["password"]))
+        {
+            $user->setPassword(
+            $this->hasher->hashPassword(
+                $user,
+                $params["password"])
+            );
         }
         if(isset($params["email"]))
         {
@@ -82,6 +102,10 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         if(isset($params["motivatie"]))
         {
         $user->setMotivatie($params['motivatie']);
+        }
+        if(isset($params["record_type"]))
+        {
+        $user->setRecordType($params['record_type']);
         }
 
         $em->persist($user);
